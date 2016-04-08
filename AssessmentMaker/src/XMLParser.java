@@ -38,30 +38,37 @@ public class XMLParser {
 			// add questions
 			String text;
 			Element question;
-
-			while ((text = reader.readLine()) != null) {
-				//if (text.equals("")) {
+			text = reader.readLine();
+			while ((text) != null) {
+				if (text.equals("")) {
+					// multiple choice question
 					question = doc.createElement("problem");
 					rootElement.appendChild(question);
+
+					// question
 					text = reader.readLine();
 					System.out.println("question: "+text);
 					Element qdata = doc.createElement("question");
 					qdata.appendChild(doc.createTextNode(text));
 					question.appendChild(qdata);
 
-
+					// correct answer
 					text = reader.readLine();
-
+					System.out.println("correct answer: "+text);
 					Element correctAnswer = doc.createElement("correctanswer");
 					correctAnswer.appendChild(doc.createTextNode(text));
 					question.appendChild(correctAnswer);
+
+					// wrong answers
 					while ((text = reader.readLine()) != null && !text.equals("")) {
 						System.out.println(text);
 						Element choice = doc.createElement("choice");
 						choice.appendChild(doc.createTextNode(text));
 						question.appendChild(choice);
 					}
-				//}
+				} else {
+					text = reader.readLine();
+				}
 
 			}
 
