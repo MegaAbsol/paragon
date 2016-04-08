@@ -72,6 +72,8 @@ public class XMLParser {
 
 			}
 
+			reader.close();
+
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
 			DOMSource source = new DOMSource(doc);
@@ -88,6 +90,40 @@ public class XMLParser {
 			e.printStackTrace();
 		}
 
+	}
+
+	public static void gradeTest(String key, String toGrade) {
+		try {
+			File inputFile = new File(toGrade);
+			BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+			File keyFile = new File(key);
+			BufferedReader keyReader = new BufferedReader(new FileReader(keyFile));
+
+			String text, keyText;
+			ArrayList<Integer> wrongAnswers = new ArrayList<Integer>();
+			int numOfProbs = 0;
+			int numCorrect = 0;
+			while ((text = reader.readLine()) != null && (keyText = keyReader.readLine()) != null) {
+				numOfProbs += 1;
+				if ("abcdefghijklmnopqrstuvwxyz".indexOf(text.toLowerCase()) == Integer.parseInt(keyText)) {
+					numCorrect += 1;
+				} else {
+					wrongAnswers.add(numOfProbs);
+				}
+			}
+
+			while ((keyReader.readLine()) != null) {
+				numOfProbs += 1;
+				wrongAnswers.add(numOfProbs);
+			}
+
+			System.out.println("dey got "+numCorrect+" correct out of "+numOfProbs);
+			System.out.println("dey got "+wrongAnswers+" wrong.");
+
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static void genTestFromXML(String template, int testNumber) {
@@ -165,11 +201,13 @@ public class XMLParser {
 	}
 
 	public static void main(String[] args) {
-		genXMLFromTemplate("inputtest.txt");
+		/*genXMLFromTemplate("inputtest.txt");
 		for (int i = 0; i < 10; i++) {
 
-			//genTestFromXML("test_template.txt", i);
-		}
+			genTestFromXML("test_template_2.txt", i);
+		}*/
+
+		gradeTest("key1.txt","student1.txt");
 
 	}
 
