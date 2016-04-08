@@ -8,6 +8,10 @@ import java.util.Random;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
@@ -30,6 +34,46 @@ public class XMLParser {
 			Document doc = docBuilder.newDocument();
 			Element rootElement = doc.createElement("test");
 			doc.appendChild(rootElement);
+
+			// add questions
+			String text;
+			Element question;
+
+			while ((text = reader.readLine()) != null) {
+				//if (text.equals("")) {
+					question = doc.createElement("problem");
+					rootElement.appendChild(question);
+					text = reader.readLine();
+					System.out.println("question: "+text);
+					Element qdata = doc.createElement("question");
+					qdata.appendChild(doc.createTextNode(text));
+					question.appendChild(qdata);
+
+
+					text = reader.readLine();
+
+					Element correctAnswer = doc.createElement("correctanswer");
+					correctAnswer.appendChild(doc.createTextNode(text));
+					question.appendChild(correctAnswer);
+					while ((text = reader.readLine()) != null && !text.equals("")) {
+						System.out.println(text);
+						Element choice = doc.createElement("choice");
+						choice.appendChild(doc.createTextNode(text));
+						question.appendChild(choice);
+					}
+				//}
+
+			}
+
+			TransformerFactory transformerFactory = TransformerFactory.newInstance();
+			Transformer transformer = transformerFactory.newTransformer();
+			DOMSource source = new DOMSource(doc);
+			StreamResult result = new StreamResult(new File("test_template_2.txt"));
+
+			// Output to console for testing
+			// StreamResult result = new StreamResult(System.out);
+
+			transformer.transform(source, result);
 
 
 
@@ -114,9 +158,10 @@ public class XMLParser {
 	}
 
 	public static void main(String[] args) {
-
+		genXMLFromTemplate("inputtest.txt");
 		for (int i = 0; i < 10; i++) {
-			genTestFromXML("test_template.txt", i);
+
+			//genTestFromXML("test_template.txt", i);
 		}
 
 	}
