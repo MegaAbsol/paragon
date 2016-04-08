@@ -1,7 +1,7 @@
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.PrintWriter;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
@@ -117,8 +117,18 @@ public class XMLParser {
 				wrongAnswers.add(numOfProbs);
 			}
 
-			System.out.println("dey got "+numCorrect+" correct out of "+numOfProbs);
-			System.out.println("dey got "+wrongAnswers+" wrong.");
+			//System.out.println("they got "+numCorrect+" correct out of "+numOfProbs);
+			//System.out.println("they got "+wrongAnswers+" wrong.");
+			String csvString = "";
+			csvString += toGrade+","+numCorrect+",";
+			for (int i=1;i<numOfProbs+1; i++) {
+				csvString += (wrongAnswers.contains(i)?"X":"")+",";
+			}
+			PrintWriter writer = new PrintWriter(new FileOutputStream(
+					new File("grades.csv"),
+					true));
+			writer.append(csvString+"\n");
+			writer.close();
 
 
 		} catch (Exception e) {
