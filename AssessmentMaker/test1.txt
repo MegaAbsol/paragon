@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<test>
+   <problem>
+      <question>What is 1 + 1?</question>
+      <correctanswer>2</correctanswer>
+      <choice>1</choice>
+      <choice>3</choice>
+      <choice>4</choice>
+   </problem>
+
+   <problem>
+      <question>What is 2 + 2?</question>
+      <correctanswer>4</correctanswer>
+      <choice>3</choice>
+      <choice>2</choice>
+      <choice>5</choice>
+   </problem>
+
+   <problem>
+      <question>What is 3 + 3?</question>
+      <correctanswer>6</correctanswer>
+      <choice>7</choice>
+      <choice>8</choice>
+      <choice>9</choice>
+   </problem>
+
+</test>
