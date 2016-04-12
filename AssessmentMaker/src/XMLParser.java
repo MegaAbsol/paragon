@@ -39,6 +39,7 @@ public class XMLParser {
 			String text;
 			Element question;
 			text = reader.readLine();
+			Integer number = 1;
 			while ((text) != null) {
 				if (text.equals("")) {
 					// multiple choice question
@@ -66,6 +67,10 @@ public class XMLParser {
 						choice.appendChild(doc.createTextNode(text));
 						question.appendChild(choice);
 					}
+					Element qnum = doc.createElement("problemnumber");
+					qnum.appendChild(doc.createTextNode(number.toString()));
+					question.appendChild(qnum);
+					number += 1;
 				} else {
 					text = reader.readLine();
 				}
@@ -104,18 +109,24 @@ public class XMLParser {
 			int numOfProbs = 0;
 			int numCorrect = 0;
 			while ((text = reader.readLine()) != null && (keyText = keyReader.readLine()) != null) {
+				String keyNumber = keyText.split(" ")[0];
+				String correctAnswer = keyText.split(" ")[1];
 				numOfProbs += 1;
-				if ("abcdefghijklmnopqrstuvwxyz".indexOf(text.toLowerCase()) == Integer.parseInt(keyText)) {
+				if ("abcdefghijklmnopqrstuvwxyz".indexOf(text.toLowerCase()) == Integer.parseInt(correctAnswer)) {
 					numCorrect += 1;
 				} else {
-					wrongAnswers.add(numOfProbs);
+					wrongAnswers.add(Integer.parseInt(keyNumber));
 				}
 			}
 
-			while ((keyReader.readLine()) != null) {
+			while ((keyText = keyReader.readLine()) != null) {
+				String keyNumber = keyText.split(" ")[0];
 				numOfProbs += 1;
-				wrongAnswers.add(numOfProbs);
+				wrongAnswers.add(Integer.parseInt(keyNumber));
 			}
+			
+			reader.close();
+			keyReader.close();
 
 			//System.out.println("they got "+numCorrect+" correct out of "+numOfProbs);
 			//System.out.println("they got "+wrongAnswers+" wrong.");
@@ -176,6 +187,11 @@ public class XMLParser {
 				String correctAnswer = eElement
 						.getElementsByTagName("correctanswer").item(0)
 						.getTextContent();
+				
+				String keyNumber = eElement
+						.getElementsByTagName("problemnumber").item(0)
+						.getTextContent();
+				
 				//System.out.println("question: " + question);
 				//System.out.println("correct answer: " + correctAnswer);
 				out.add(correctAnswer);
@@ -193,7 +209,7 @@ public class XMLParser {
 
 
 				writer.println(problemNumber + ". " + question);
-				keyWriter.println(key);
+				keyWriter.println(keyNumber + " " + key);
 				for (int i = 0; i < out.size(); i++) {
 					writer.println("abcdefghijklmnopqrstuvwxyz".charAt(i)+") "+out.get(i));
 				}
@@ -211,13 +227,14 @@ public class XMLParser {
 	}
 
 	public static void main(String[] args) {
-		/*genXMLFromTemplate("inputtest.txt");
-		for (int i = 0; i < 10; i++) {
+		/*
+		genXMLFromTemplate("newtest.txt");
+		for (int i = 0; i < 3; i++) {
 
 			genTestFromXML("test_template_2.txt", i);
 		}*/
 
-		gradeTest("key1.txt","student1.txt");
+		gradeTest("key0.txt","student0.txt");
 
 	}
 
