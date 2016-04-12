@@ -1,21 +1,108 @@
-1. What is 1+1?
+1. What is 18 + 17?
+a) 18
+b) 2
+c) 35
+d) 4
+e) 18
+f) 5
+
+2. What is 14 + 17?
+a) 5
+b) 0
+c) 31
+d) -8
+
+3. What is 16 + 14?
+a) 16
+b) -1
+c) 9
+d) -9
+e) 30
+
+4. What is 10 + 17?
+a) 3
+b) 17
+c) 4
+d) 27
+e) 1
+
+5. What is 16 + 16?
+a) 6
+b) 9
+c) 16
+d) 8
+e) 4
+f) 32
+
+6. What is 16 + 18?
 a) 4
-b) fiskdbjvlkjv
+b) 11
+c) 5
+d) 34
+e) 11
+
+7. What is 18 + 18?
+a) 5
+b) 2
 c) 3
-d) asdfkjalsdf
-e) 2
+d) 16
+e) -4
+f) 36
 
-2. What is 2+9?
-a) 11
-b) aasdjfklajvasdvkhas
-c) gay
-d) 69
-e) vasjdvl
-f) asdkvljasld
-g) is
-h) vlkjasdlkvj
+8. What is 19 + 20?
+a) 39
+b) 7
+c) -7
+d) 18
+e) 5
 
-3. Who is best?
-a) Kevin Shen
-b) someone else
+9. What is 19 + 13?
+a) -4
+b) 32
+c) 12
+d) 10
+
+10. What is 11 + 17?
+a) -5
+b) 10
+c) -10
+d) 5
+e) 9
+f) 28
+
+11. What is 15 + 15?
+a) 10
+b) 30
+c) -1
+d) -4
+e) -5
+
+12. What is 12 + 16?
+a) 7
+b) 11
+c) 28
+d) -2
+e) 0
+f) 13
+
+13. What is 14 + 17?
+a) 5
+b) 8
+c) 17
+d) 0
+e) 31
+f) -3
+
+14. What is 15 + 18?
+a) -6
+b) -8
+c) -1
+d) 33
+
+15. What is 11 + 17?
+a) 28
+b) 2
+c) 9
+d) -4
+e) -10
 

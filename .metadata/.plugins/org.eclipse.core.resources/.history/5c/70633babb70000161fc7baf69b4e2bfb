@@ -227,12 +227,12 @@ public class XMLParser {
 	}
 
 	public static void main(String[] args) {
-		
-		genXMLFromTemplate("out.txt");
+		/*
+		genXMLFromTemplate("newtest.txt");
 		for (int i = 0; i < 3; i++) {
 
 			genTestFromXML("test_template_2.txt", i);
-		}
+		}*/
 
 		gradeTest("key0.txt","student0.txt");
 
