@@ -131,7 +131,7 @@ public class XMLParser {
 			//System.out.println("they got "+numCorrect+" correct out of "+numOfProbs);
 			//System.out.println("they got "+wrongAnswers+" wrong.");
 			String csvString = "";
-			csvString += toGrade+","+numCorrect+","+Math.round(10000.0*numCorrect/numOfProbs)/100.0+",";
+			csvString += toGrade+","+numCorrect+",,";
 			for (int i=1;i<numOfProbs+1; i++) {
 				csvString += (wrongAnswers.contains(i)?"X":"-")+",";
 			}
@@ -139,7 +139,7 @@ public class XMLParser {
 			File f = new File("grades.csv");
 			if(!f.exists()) { 
 				PrintWriter writer = new PrintWriter("grades.csv", "UTF-8");
-				String generated = "File Name,# Correct (Out of "+((Integer)numOfProbs).toString()+"),Percentage,";
+				String generated = "File Name,# Correct (Out of "+((Integer)numOfProbs).toString()+"),,";
 				for (Integer i=1; i <= numOfProbs; i++) {
 					generated += i.toString() + ",";
 				}
@@ -246,7 +246,6 @@ public class XMLParser {
 
 			genTestFromXML("test_template_2.txt", i);
 		}*/
-		gradeTest("key2.txt","rohitisdagr8st.txt");
 		gradeTest("key1.txt","hornpub.txt");
 		gradeTest("key0.txt","answer0.txt");
 

@@ -246,7 +246,6 @@ public class XMLParser {
 
 			genTestFromXML("test_template_2.txt", i);
 		}*/
-		gradeTest("key2.txt","rohitisdagr8st.txt");
 		gradeTest("key1.txt","hornpub.txt");
 		gradeTest("key0.txt","answer0.txt");
 
