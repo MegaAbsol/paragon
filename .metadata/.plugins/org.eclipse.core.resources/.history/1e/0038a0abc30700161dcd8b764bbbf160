@@ -1,0 +1,6 @@
+import time
+a = input()
+b = input()
+input()
+time.sleep(2)
+print(int(a)+1)

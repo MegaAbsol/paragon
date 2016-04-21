@@ -1,0 +1,20 @@
+
+public class PythonRunnerFramework {
+	public static void runFile(String filename) {
+		runFile(filename, "C:\\Python34\\python.exe");
+	}
+	
+	public static void runFile(String filename, String pythonPath) {
+		try {
+			Process p = Runtime.getRuntime().exec(pythonPath+" "+filename);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

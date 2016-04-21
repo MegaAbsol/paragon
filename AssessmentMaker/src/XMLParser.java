@@ -20,7 +20,7 @@ import org.w3c.dom.Element;
 
 public class XMLParser {
 
-	public static void genXMLFromTemplate(String template) {
+	public static void genXMLFromTemplate(String template, String XMLName) {
 		try {
 			File inputFile = new File(template);
 			BufferedReader reader = new BufferedReader(new FileReader(inputFile));
@@ -82,7 +82,7 @@ public class XMLParser {
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
 			DOMSource source = new DOMSource(doc);
-			StreamResult result = new StreamResult(new File("test_template_2.txt"));
+			StreamResult result = new StreamResult(new File(XMLName));
 
 			// Output to console for testing
 			// StreamResult result = new StreamResult(System.out);
@@ -98,6 +98,9 @@ public class XMLParser {
 	}
 
 	public static void gradeTest(String key, String toGrade) {
+		/**
+		 * grades test
+		 */
 		try {
 			File inputFile = new File(toGrade);
 			BufferedReader reader = new BufferedReader(new FileReader(inputFile));
@@ -187,6 +190,8 @@ public class XMLParser {
 			Collections.shuffle(newOrder, new Random());
 
 			int problemNumber = 1;
+			// in case want newline at front
+			writer.println();
 			for (int temp : newOrder) {
 				// each problem
 				ArrayList<String> out = new ArrayList<String>();
@@ -238,10 +243,18 @@ public class XMLParser {
 			e.printStackTrace();
 		}
 	}
+	
+	public static void generateNTests(String template, int howMany) {
+		genXMLFromTemplate(template, "test_template_2.txt");
+		for (int i=0; i < howMany; i++) {
+			genTestFromXML("test_template_2.txt",i);
+		}
+		
+	}
 
 	public static void main(String[] args) {
 		/*
-		genXMLFromTemplate("out.txt");
+		genXMLFromTemplate("out.txt", "test_template_2.txt");
 		for (int i = 0; i < 3; i++) {
 
 			genTestFromXML("test_template_2.txt", i);

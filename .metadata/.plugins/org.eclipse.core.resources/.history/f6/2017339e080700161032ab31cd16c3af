@@ -1,0 +1,34 @@
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.concurrent.TimeUnit;
+
+
+public class PythonRunnerFramework {
+	public static void runFile(String filename, String expectedOutput) {
+		runFile(filename, "C:\\Python34\\python.exe", expectedOutput);
+	}
+	
+	public static void runFile(String filename, String pythonPath, String expectedOutput) {
+		try {
+			Process p = Runtime.getRuntime().exec(pythonPath+" "+filename);
+			OutputStream in = p.getOutputStream();
+			InputStream out = p.getInputStream();
+			
+			StringBuffer sb = new StringBuffer();
+			String s;
+			byte n;
+			while ((n = out.read()) != null)
+			    sb.append(s);
+			
+			p.waitFor(5, TimeUnit.SECONDS);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

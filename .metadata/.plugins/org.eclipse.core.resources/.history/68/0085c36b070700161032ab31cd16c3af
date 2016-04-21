@@ -1,0 +1,16 @@
+
+public class PythonRunnerFramework {
+	public static void runFile(String filename) {
+		runFile(filename, "C:\\Python34\\python.exe");
+	}
+	
+	public static void runFile(String filename, String pythonPath) {
+		
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
