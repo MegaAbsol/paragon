@@ -1,5 +1,3 @@
-import time
+import random
 a = input()
-for i in range(100000000000000000000000000):
-	print(i)
-print(int(a)+1)
+print(random.randint(0,1))

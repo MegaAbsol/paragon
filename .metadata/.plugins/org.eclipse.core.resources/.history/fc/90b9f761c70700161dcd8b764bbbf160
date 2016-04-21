@@ -19,12 +19,11 @@ public class PythonRunnerFramework {
 			ArrayList<String> data = test(filename, inputs, outputs);
 			String csvString = "";
 			csvString += filename+",";
-			Integer occurrences = Collections.frequency(data, "correct");
-			csvString += occurrences.toString() + ",";
+			int occurrences = Collections.frequency(data, "correct");
 			
-			csvString += data.get(0) +",";
+			csvString += data.get(0);
 			for (int i=1;i<data.size(); i++) {
-				csvString += data.get(i) + ",";
+				csvString += data.get(i);
 			}
 			
 			File f = new File("programscore.csv");
@@ -32,7 +31,7 @@ public class PythonRunnerFramework {
 				PrintWriter writer = new PrintWriter("programscore.csv", "UTF-8");
 				String generated = "File Name,Score,Warnings,";
 				for (Integer i=1; i <= inputs.size(); i++) {
-					generated += "Test "+i.toString() + ",";
+					generated += "Test case "+i.toString() + ",";
 				}
 				writer.write(generated+"\n\n");
 				writer.close();
@@ -40,7 +39,7 @@ public class PythonRunnerFramework {
 			
 			
 			PrintWriter writer = new PrintWriter(new FileOutputStream(
-					new File("programscore.csv"),
+					new File("grades.csv"),
 					true));
 			writer.append(csvString+"\n");
 			writer.close();
@@ -141,16 +140,7 @@ public class PythonRunnerFramework {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		ArrayList<String> inputs = new ArrayList<String>();
-		ArrayList<String> outputs = new ArrayList<String>();
-		for (Integer i = 0; i < 10; i++) {
-			inputs.add(i.toString());
-		}
-		for (Integer i = 0; i < 10; i++) {
-			outputs.add("1");
-		}
-		
-		generateCSV("test.py",inputs,outputs);
+		runFile("test.py","4","5");
 	}
 
 }

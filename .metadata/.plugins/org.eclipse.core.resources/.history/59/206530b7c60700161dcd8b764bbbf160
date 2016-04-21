@@ -8,45 +8,41 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.concurrent.TimeUnit;
 
 
 public class PythonRunnerFramework {
 	
 	public static void generateCSV(String filename, ArrayList<String> inputs, ArrayList<String> outputs) {
-		try {
-			ArrayList<String> data = test(filename, inputs, outputs);
-			String csvString = "";
-			csvString += filename+",";
-			Integer occurrences = Collections.frequency(data, "correct");
-			csvString += occurrences.toString() + ",";
-			
-			csvString += data.get(0) +",";
-			for (int i=1;i<data.size(); i++) {
-				csvString += data.get(i) + ",";
-			}
-			
-			File f = new File("programscore.csv");
-			if(!f.exists()) { 
-				PrintWriter writer = new PrintWriter("programscore.csv", "UTF-8");
-				String generated = "File Name,Score,Warnings,";
-				for (Integer i=1; i <= inputs.size(); i++) {
-					generated += "Test "+i.toString() + ",";
-				}
-				writer.write(generated+"\n\n");
-				writer.close();
-			}
-			
-			
-			PrintWriter writer = new PrintWriter(new FileOutputStream(
-					new File("programscore.csv"),
-					true));
-			writer.append(csvString+"\n");
-			writer.close();
-		} catch (Exception e) {
-			e.printStackTrace();
+		
+		ArrayList<String> data = test(filename, inputs, outputs);
+		String csvString = "";
+		csvString += filename+",";
+		
+		csvString += data.get(0);
+			csvString += data.get(0);
 		}
+		for (int i=1;i<numOfProbs+1; i++) {
+			csvString += (wrongAnswers.contains(i)?"X":"-")+",";
+		}
+		
+		File f = new File("grades.csv");
+		if(!f.exists()) { 
+			PrintWriter writer = new PrintWriter("programscore.csv", "UTF-8");
+			String generated = "File Name,Warnings,";
+			for (Integer i=1; i <= inputs.size(); i++) {
+				generated += "Test case "+i.toString() + ",";
+			}
+			writer.write(generated+"\n\n");
+			writer.close();
+		}
+		
+		
+		PrintWriter writer = new PrintWriter(new FileOutputStream(
+				new File("grades.csv"),
+				true));
+		writer.append(csvString+"\n");
+		writer.close();
 	}
 	
 	public static boolean checkForOpen(String filename) {
@@ -141,16 +137,7 @@ public class PythonRunnerFramework {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		ArrayList<String> inputs = new ArrayList<String>();
-		ArrayList<String> outputs = new ArrayList<String>();
-		for (Integer i = 0; i < 10; i++) {
-			inputs.add(i.toString());
-		}
-		for (Integer i = 0; i < 10; i++) {
-			outputs.add("1");
-		}
-		
-		generateCSV("test.py",inputs,outputs);
+		runFile("test.py","4","5");
 	}
 
 }

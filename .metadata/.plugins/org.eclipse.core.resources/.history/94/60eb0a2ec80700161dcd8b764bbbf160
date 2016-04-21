@@ -22,7 +22,7 @@ public class PythonRunnerFramework {
 			Integer occurrences = Collections.frequency(data, "correct");
 			csvString += occurrences.toString() + ",";
 			
-			csvString += data.get(0) +",";
+			csvString += data.get(0);
 			for (int i=1;i<data.size(); i++) {
 				csvString += data.get(i) + ",";
 			}

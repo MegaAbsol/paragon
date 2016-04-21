@@ -22,9 +22,9 @@ public class PythonRunnerFramework {
 			Integer occurrences = Collections.frequency(data, "correct");
 			csvString += occurrences.toString() + ",";
 			
-			csvString += data.get(0) +",";
+			csvString += data.get(0);
 			for (int i=1;i<data.size(); i++) {
-				csvString += data.get(i) + ",";
+				csvString += data.get(i);
 			}
 			
 			File f = new File("programscore.csv");
@@ -32,7 +32,7 @@ public class PythonRunnerFramework {
 				PrintWriter writer = new PrintWriter("programscore.csv", "UTF-8");
 				String generated = "File Name,Score,Warnings,";
 				for (Integer i=1; i <= inputs.size(); i++) {
-					generated += "Test "+i.toString() + ",";
+					generated += "Test case "+i.toString() + ",";
 				}
 				writer.write(generated+"\n\n");
 				writer.close();
