@@ -17,15 +17,14 @@ import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
 import org.w3c.dom.Element;
+import org.w3c.dom.Attr;
 
-public class XMLParser {
+public class QuizUtils {
 
 	public static void genXMLFromTemplate(String template, String XMLName) {
 		try {
 			File inputFile = new File(template);
 			BufferedReader reader = new BufferedReader(new FileReader(inputFile));
-
-
 
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
@@ -45,6 +44,10 @@ public class XMLParser {
 					// multiple choice question
 					question = doc.createElement("problem");
 					rootElement.appendChild(question);
+
+					Attr attr = doc.createAttribute("type");
+					attr.setValue("multiplechoice");
+					question.setAttributeNode(attr);
 
 					// question
 					text = reader.readLine();
@@ -98,6 +101,10 @@ public class XMLParser {
 	}
 
 	public static void gradeTest(String key, String toGrade) {
+		gradeTest(key, toGrade, "grades.csv");
+	}
+
+	public static void gradeTest(String key, String toGrade, String outFile) {
 		/**
 		 * grades test
 		 */
@@ -139,9 +146,9 @@ public class XMLParser {
 				csvString += (wrongAnswers.contains(i)?"X":"-")+",";
 			}
 			
-			File f = new File("grades.csv");
+			File f = new File(outFile);
 			if(!f.exists()) { 
-				PrintWriter writer = new PrintWriter("grades.csv", "UTF-8");
+				PrintWriter writer = new PrintWriter(outFile, "UTF-8");
 				String generated = "File Name,# Correct (Out of "+((Integer)numOfProbs).toString()+"),Percentage,";
 				for (Integer i=1; i <= numOfProbs; i++) {
 					generated += i.toString() + ",";
@@ -152,7 +159,7 @@ public class XMLParser {
 			
 			
 			PrintWriter writer = new PrintWriter(new FileOutputStream(
-					new File("grades.csv"),
+					new File(outFile),
 					true));
 			writer.append(csvString+"\n");
 			writer.close();
@@ -191,7 +198,7 @@ public class XMLParser {
 
 			int problemNumber = 1;
 			// in case want newline at front
-			writer.println();
+			// writer.println();
 			for (int temp : newOrder) {
 				// each problem
 				ArrayList<String> out = new ArrayList<String>();
@@ -209,9 +216,9 @@ public class XMLParser {
 				String keyNumber = eElement
 						.getElementsByTagName("problemnumber").item(0)
 						.getTextContent();
-				
-				//System.out.println("question: " + question);
-				//System.out.println("correct answer: " + correctAnswer);
+
+				// this part is for multiple choice questions
+
 				out.add(correctAnswer);
 				NodeList answers = eElement.getElementsByTagName("choice");
 				for (int temp2 = 0; temp2 < answers.getLength(); temp2++) {
@@ -231,6 +238,8 @@ public class XMLParser {
 				for (int i = 0; i < out.size(); i++) {
 					writer.println("abcdefghijklmnopqrstuvwxyz".charAt(i)+") "+out.get(i));
 				}
+
+				// end mc questions
 				writer.println();
 				problemNumber += 1;
 
@@ -245,11 +254,14 @@ public class XMLParser {
 	}
 	
 	public static void generateNTests(String template, int howMany) {
-		genXMLFromTemplate(template, "test_template_2.txt");
+		generateNTests(template,howMany,"temp.txt");
+	}
+
+	public static void generateNTests(String template, int howMany, String templateName) {
+		genXMLFromTemplate(template, templateName);
 		for (int i=0; i < howMany; i++) {
-			genTestFromXML("test_template_2.txt",i);
+			genTestFromXML(templateName,i);
 		}
-		
 	}
 
 	public static void main(String[] args) {
@@ -259,9 +271,9 @@ public class XMLParser {
 
 			genTestFromXML("test_template_2.txt", i);
 		}*/
-		gradeTest("key2.txt","rohitisdagr8st.txt");
-		gradeTest("key1.txt","hornpub.txt");
-		gradeTest("key0.txt","answer0.txt");
+		gradeTest("key2.txt","rohitisdagr8st.txt", "test.csv");
+		gradeTest("key1.txt","hornpub.txt", "test.csv");
+		gradeTest("key0.txt","answer0.txt", "test.csv");
 
 	}
 

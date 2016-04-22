@@ -60,6 +60,9 @@ public class PythonRunnerFramework {
 				if (text.toLowerCase().contains("open(")) {
 					return true;
 				}
+				if (text.toLowerCase().contains("__open__")) {
+					return true;
+				}
 			}
 			
 		} catch (Exception e) {
@@ -86,7 +89,7 @@ public class PythonRunnerFramework {
 			writer.write(input+"\n");
 			writer.flush();
 			writer.close();
-			boolean timeout = p.waitFor(10, TimeUnit.SECONDS);
+			boolean timeout = p.waitFor(3, TimeUnit.SECONDS);
 			
 			if (timeout == false) {
 				return "timeout";
@@ -106,7 +109,7 @@ public class PythonRunnerFramework {
 				return "no output, probable error";
 			} else {
 				System.out.println("wrong, you said: "+s+" and I wanted "+expectedOutput);
-				return "wrong answer: "+s;
+				return "wrong: "+s;
 			}
 			
 		} catch (Exception e) {
@@ -124,7 +127,7 @@ public class PythonRunnerFramework {
 		}
 		
 		if (inputs.size() != outputs.size()) {
-			System.out.println("input length and ouput length aren't the same!");
+			System.out.println("input length and output length aren't the same!");
 			return null;
 		}
 		for (int i = 0; i < inputs.size(); i++) {
