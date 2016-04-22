@@ -75,6 +75,7 @@ public class QuizUtils {
 					question.appendChild(qnum);
 					number += 1;
 				} else if (text != null && text.equals("_s")) {
+					// short answer
 					question = doc.createElement("problem");
 					rootElement.appendChild(question);
 
@@ -95,12 +96,48 @@ public class QuizUtils {
 					Element correctAnswer = doc.createElement("correctanswer");
 					correctAnswer.appendChild(doc.createTextNode(text));
 					question.appendChild(correctAnswer);
-					
+
 					Element qnum = doc.createElement("problemnumber");
 					qnum.appendChild(doc.createTextNode(number.toString()));
 					question.appendChild(qnum);
 					number += 1;
-				} else {
+				}
+				/* text
+				else if (text != null && text.equals("_t")) {
+					//text block
+					question = doc.createElement("problem");
+					rootElement.appendChild(question);
+
+					Attr attr = doc.createAttribute("type");
+					attr.setValue("text");
+					question.setAttributeNode(attr);
+
+
+
+					// question
+					String s = "";
+
+					while (!(text = reader.readLine()).equals("end_t")) {
+						s += text + "\n";
+					}
+					text = reader.readLine();
+					System.out.println("text: "+text);
+					Element qdata = doc.createElement("question");
+					qdata.appendChild(doc.createTextNode(text));
+					question.appendChild(qdata);
+
+					Element correctAnswer = doc.createElement("correctanswer");
+					correctAnswer.appendChild(doc.createTextNode("none"));
+					question.appendChild(correctAnswer);
+
+					Element qnum = doc.createElement("problemnumber");
+					qnum.appendChild(doc.createTextNode("0"));
+					question.appendChild(qnum);
+
+
+				}
+				*/
+				else {
 					text = reader.readLine();
 				}
 
@@ -282,6 +319,12 @@ public class QuizUtils {
 					writer.println("Ans: _____________");
 					keyWriter.println("sa`"+keyNumber + "`" + correctAnswer);
 				}
+
+				/* text
+				else if (type.equals("text")) {
+					writer.println(question);
+					problemNumber -= 1;
+				} */
 				writer.println();
 				problemNumber += 1;
 
@@ -308,8 +351,8 @@ public class QuizUtils {
 
 	public static void main(String[] args) {
 		
-		//generateNTests("out.txt", 3);
-		gradeTest("key0.txt", "studentanswers.txt","krust.csv");
+		generateNTests("out.txt", 3);
+		//gradeTest("key0.txt", "studentanswers.txt","krust.csv");
 		/*
 		genXMLFromTemplate("out.txt", "test_template_2.txt");
 		for (int i = 0; i < 3; i++) {
@@ -318,7 +361,7 @@ public class QuizUtils {
 		}*/
 		/*
 		gradeTest("key2.txt","rohitisdagr8st.txt", "test.csv");
-		gradeTest("key1.txt","hornpub.txt", "test.csv");
+		gradeTest("key1.txt","andyisbad.txt", "test.csv");
 		gradeTest("key0.txt","answer0.txt", "test.csv");
 		*/
 

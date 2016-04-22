@@ -72,6 +72,27 @@ public class PythonRunnerFramework {
 		
 		return false;
 	}
+
+	public static boolean checkForImport(String filename) {
+		try {
+			File inputFile = new File(filename);
+			BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+
+			String text;
+
+			while ((text = reader.readLine()) != null) {
+				if (text.toLowerCase().contains("import")) {
+					return true;
+				}
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+
+		return false;
+	}
 	
 	public static String runFile(String filename, String input, String expectedOutput) {
 		return runFile(filename, "C:\\Python34\\python.exe", input, expectedOutput);
@@ -123,9 +144,13 @@ public class PythonRunnerFramework {
 		String warnings = "";
 		
 		if (checkForOpen(filename)) {
-			warnings += "WARNING: open() function detected";
+			warnings += "WARNING: open() function detected! ";
 		}
-		
+
+		if (checkForImport(filename)) {
+			warnings += "WARNING: import detected! ";
+		}
+
 		if (inputs.size() != outputs.size()) {
 			System.out.println("input length and output length aren't the same!");
 			return null;
