@@ -6,6 +6,9 @@ What is 14 + 17?
 8
 17
 5
+_s
+Why u do dis?
+idk
 
 What is 10 + 17?
 27
@@ -106,3 +109,6 @@ What is 11 + 17?
 -4
 -10
 9
+_s
+Who is the greatest?
+Kevin Shen

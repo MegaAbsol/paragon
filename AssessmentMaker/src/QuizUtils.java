@@ -40,7 +40,7 @@ public class QuizUtils {
 			text = reader.readLine();
 			Integer number = 1;
 			while ((text) != null) {
-				if (text.equals("")) {
+				if (text != null && text.equals("")) {
 					// multiple choice question
 					question = doc.createElement("problem");
 					rootElement.appendChild(question);
@@ -64,12 +64,38 @@ public class QuizUtils {
 					question.appendChild(correctAnswer);
 
 					// wrong answers
-					while ((text = reader.readLine()) != null && !text.equals("")) {
+					while ((text = reader.readLine()) != null && !text.equals("") && !text.equals("_s")) {
 						System.out.println(text);
 						Element choice = doc.createElement("choice");
 						choice.appendChild(doc.createTextNode(text));
 						question.appendChild(choice);
 					}
+					Element qnum = doc.createElement("problemnumber");
+					qnum.appendChild(doc.createTextNode(number.toString()));
+					question.appendChild(qnum);
+					number += 1;
+				} else if (text != null && text.equals("_s")) {
+					question = doc.createElement("problem");
+					rootElement.appendChild(question);
+
+					Attr attr = doc.createAttribute("type");
+					attr.setValue("shortanswer");
+					question.setAttributeNode(attr);
+
+					// question
+					text = reader.readLine();
+					System.out.println("question: "+text);
+					Element qdata = doc.createElement("question");
+					qdata.appendChild(doc.createTextNode(text));
+					question.appendChild(qdata);
+
+					// correct answer
+					text = reader.readLine();
+					System.out.println("correct answer: "+text);
+					Element correctAnswer = doc.createElement("correctanswer");
+					correctAnswer.appendChild(doc.createTextNode(text));
+					question.appendChild(correctAnswer);
+					
 					Element qnum = doc.createElement("problemnumber");
 					qnum.appendChild(doc.createTextNode(number.toString()));
 					question.appendChild(qnum);
@@ -119,13 +145,22 @@ public class QuizUtils {
 			int numOfProbs = 0;
 			int numCorrect = 0;
 			while ((text = reader.readLine()) != null && (keyText = keyReader.readLine()) != null) {
-				String keyNumber = keyText.split(" ")[0];
-				String correctAnswer = keyText.split(" ")[1];
+				String problemType = keyText.split("`")[0];
+				String keyNumber = keyText.split("`")[1];
+				String correctAnswer = keyText.split("`")[2];
 				numOfProbs += 1;
-				if ("abcdefghijklmnopqrstuvwxyz".indexOf(text.toLowerCase()) == Integer.parseInt(correctAnswer)) {
-					numCorrect += 1;
-				} else {
-					wrongAnswers.add(Integer.parseInt(keyNumber));
+				if (problemType.equals("mc")) {
+					if ("abcdefghijklmnopqrstuvwxyz".indexOf(text.toLowerCase()) == Integer.parseInt(correctAnswer)) {
+						numCorrect += 1;
+					} else {
+						wrongAnswers.add(Integer.parseInt(keyNumber));
+					}
+				} else if (problemType.equals("sa")) {
+					if (text.toLowerCase().trim().equals(correctAnswer.toLowerCase().trim())) {
+						numCorrect += 1;
+					} else {
+						wrongAnswers.add(Integer.parseInt(keyNumber));
+					}
 				}
 			}
 
@@ -216,30 +251,37 @@ public class QuizUtils {
 				String keyNumber = eElement
 						.getElementsByTagName("problemnumber").item(0)
 						.getTextContent();
+				
+				String type = eElement.getAttribute("type");
 
 				// this part is for multiple choice questions
-
-				out.add(correctAnswer);
-				NodeList answers = eElement.getElementsByTagName("choice");
-				for (int temp2 = 0; temp2 < answers.getLength(); temp2++) {
-					String choice = answers.item(temp2).getTextContent();
-					out.add(choice);
-					//System.out.println("other answer: " + choice);
+				if (type.equals("multiplechoice")) {
+					out.add(correctAnswer);
+					NodeList answers = eElement.getElementsByTagName("choice");
+					for (int temp2 = 0; temp2 < answers.getLength(); temp2++) {
+						String choice = answers.item(temp2).getTextContent();
+						out.add(choice);
+						//System.out.println("other answer: " + choice);
+					}
+	
+					Collections.shuffle(out, new Random());
+					//System.out.println(out);
+					int key = out.indexOf(correctAnswer);
+					//System.out.println(key);
+	
+	
+					writer.println(problemNumber + ". " + question);
+					keyWriter.println("mc`"+keyNumber + "`" + key);
+					for (int i = 0; i < out.size(); i++) {
+						writer.println("abcdefghijklmnopqrstuvwxyz".charAt(i)+") "+out.get(i));
+					}
+	
+					// end mc questions
+				} else if (type.equals("shortanswer")) {
+					writer.println(problemNumber + ". " + question);
+					writer.println("Ans: _____________");
+					keyWriter.println("sa`"+keyNumber + "`" + correctAnswer);
 				}
-
-				Collections.shuffle(out, new Random());
-				//System.out.println(out);
-				int key = out.indexOf(correctAnswer);
-				//System.out.println(key);
-
-
-				writer.println(problemNumber + ". " + question);
-				keyWriter.println(keyNumber + " " + key);
-				for (int i = 0; i < out.size(); i++) {
-					writer.println("abcdefghijklmnopqrstuvwxyz".charAt(i)+") "+out.get(i));
-				}
-
-				// end mc questions
 				writer.println();
 				problemNumber += 1;
 
@@ -254,7 +296,7 @@ public class QuizUtils {
 	}
 	
 	public static void generateNTests(String template, int howMany) {
-		generateNTests(template,howMany,"temp.txt");
+		generateNTests(template,howMany,"temp.xml");
 	}
 
 	public static void generateNTests(String template, int howMany, String templateName) {
@@ -265,15 +307,20 @@ public class QuizUtils {
 	}
 
 	public static void main(String[] args) {
+		
+		//generateNTests("out.txt", 3);
+		gradeTest("key0.txt", "studentanswers.txt","krust.csv");
 		/*
 		genXMLFromTemplate("out.txt", "test_template_2.txt");
 		for (int i = 0; i < 3; i++) {
 
 			genTestFromXML("test_template_2.txt", i);
 		}*/
+		/*
 		gradeTest("key2.txt","rohitisdagr8st.txt", "test.csv");
 		gradeTest("key1.txt","hornpub.txt", "test.csv");
 		gradeTest("key0.txt","answer0.txt", "test.csv");
+		*/
 
 	}
 
