@@ -5,6 +5,7 @@ import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
+import java.util.Scanner;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
@@ -662,8 +663,77 @@ public class QuizUtils {
 		}
 	}
 
+	/**
+	 * Interactive test generator.
+	 */
+	public static void interactiveTestGen() {
+		try {
+			Scanner sc = new Scanner(System.in);
+			System.out.println("Title: ");
+			String title = sc.nextLine();
+			PrintWriter writer = new PrintWriter(title.replace(" ","_")+".txt", "UTF-8");
+			String problemType;
+			do {
+				System.out.println("Problem type? m for multiple choice, s for short answer, or q to quit: ");
+				problemType = sc.nextLine();
+
+				if (problemType.equals("m")) {
+					// multiple choice
+					// header for multiple choice questions
+					System.out.println("Question: ");
+					String question = sc.nextLine();
+					writer.println();
+					writer.println(question);
+					System.out.println("Correct Answer: ");
+					String ca = sc.nextLine();
+					writer.println(ca);
+					String answerChoice;
+					do {
+						System.out.println("Other choice (empty string to continue): ");
+						answerChoice = sc.nextLine();
+						if (!answerChoice.equals(""))
+							writer.println(answerChoice);
+					} while (!answerChoice.trim().equals(""));
+				}
+				else if (problemType.equals("s")) {
+					System.out.println("Question: ");
+					String question = sc.nextLine();
+					writer.println("_s");
+					writer.println(question);
+					System.out.println("Correct Answer: ");
+					String ca = sc.nextLine();
+					writer.println(ca);
+				}
+				else if (problemType.equals("q")) {
+					break;
+				}
+
+			} while (!problemType.equals("q"));
+			writer.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 *
+	 * @param args: -i=infile, -
+     */
 	public static void main(String[] args) {
-		gradeForm("327672.txt","newtest.csv");
+		if (args.length > 0) {
+			if (args[0].equals("make")) {
+				interactiveTestGen();
+			}
+			else if (args[0].equals("generate")) {
+				// generate test
+				// needs list of student ids
+			}
+			else if (args[0].equals("grade")) {
+				// grade tests
+			}
+		}
+		interactiveTestGen();
+		//gradeForm("327672.txt","newtest.csv");
 		//gradeTest("key5.txt", "answerpdf5.txt");
 		//genXMLFromTemplate("fakeAssessment.txt","temp.xml");
 		//genPDFTestFromXML("temp.xml",327672);
