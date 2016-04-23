@@ -1,7 +1,7 @@
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
+//import java.nio.file.Files;
+//import java.nio.file.Paths;
+//import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
@@ -26,6 +26,10 @@ import org.w3c.dom.Attr;
 
 public class QuizUtils {
 
+
+	public static void makeDirectory(String dirname) {
+		new File(dirname).mkdirs();
+	}
 	/**
 	 * Generates a personalized PDF test and an answer key from an XML file.
 	 *
@@ -33,14 +37,32 @@ public class QuizUtils {
 	 * @param testNumber student ID
      */
 	public static void genPDFTestFromXML(String template, int testNumber) {
+		genPDFTestFromXML(template, testNumber, "", "", "", "");
+	}
+
+	/**
+	 * Generates a personalized PDF test and an answer key from an XML file in the right directories.
+	 *
+	 * @param template name of xml template to generate test from
+	 * @param testNumber student ID
+	 * @param templateDirectory directory where XML template is located
+	 * @param outDirectory directory to put output
+     */
+	public static void genPDFTestFromXML(String template, int testNumber, String templateDirectory, String outDirectory, String formOutDirectory, String keyOutDirectory) {
+
+		makeDirectory(templateDirectory);
+		makeDirectory(outDirectory);
+		makeDirectory(formOutDirectory);
+		makeDirectory(keyOutDirectory);
+
 		com.itextpdf.text.Document document = new com.itextpdf.text.Document();
 		Font titleFont = FontFactory.getFont(FontFactory.COURIER_BOLD, 30, Font.NORMAL, new CMYKColor(0, 0, 0, 255));
 		Font defaultFont = FontFactory.getFont(FontFactory.COURIER, 12, Font.NORMAL, new CMYKColor(0, 0, 0, 255));
 		try {
-			PdfWriter docwriter = PdfWriter.getInstance(document, new FileOutputStream(testNumber+".pdf"));
+			PdfWriter docwriter = PdfWriter.getInstance(document, new FileOutputStream(outDirectory+testNumber+".pdf"));
 			document.open();
 
-			File inputFile = new File(template);
+			File inputFile = new File(templateDirectory+template);
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory
 					.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -54,7 +76,7 @@ public class QuizUtils {
 			document.add(titlepg);
 			//document.add(new Paragraph("\n"));
 
-			PrintWriter keyWriter = new PrintWriter("key"+testNumber+".txt", "UTF-8");
+			PrintWriter keyWriter = new PrintWriter(keyOutDirectory+"key"+testNumber+".txt", "UTF-8");
 
 
 
@@ -140,7 +162,7 @@ public class QuizUtils {
 
 			}
 
-			generateStudentForm(testNumber,title,problemNumber-1);
+			generateStudentForm(testNumber,title,problemNumber-1,formOutDirectory);
 
 			keyWriter.close();
 
@@ -151,7 +173,6 @@ public class QuizUtils {
 			e.printStackTrace();
 		}
 	}
-
 	/**
 	 * Generates an XML file from a plaintext test template
 	 *
@@ -159,8 +180,16 @@ public class QuizUtils {
 	 * @param XMLName the output xml filename
      */
 	public static void genXMLFromTemplate(String template, String XMLName) {
+		genXMLFromTemplate(template,XMLName,"","");
+	}
+
+	public static void genXMLFromTemplate(String template, String XMLName, String templateDir, String XMLDir) {
+
+		makeDirectory(templateDir);
+		makeDirectory(XMLDir);
+
 		try {
-			File inputFile = new File(template);
+			File inputFile = new File(templateDir+template);
 			BufferedReader reader = new BufferedReader(new FileReader(inputFile));
 
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
@@ -300,7 +329,7 @@ public class QuizUtils {
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
 			DOMSource source = new DOMSource(doc);
-			StreamResult result = new StreamResult(new File(XMLName));
+			StreamResult result = new StreamResult(new File(XMLDir+XMLName));
 
 			// Output to console for testing
 			// StreamResult result = new StreamResult(System.out);
@@ -420,8 +449,17 @@ public class QuizUtils {
 	 * @param outFile the output CSV to display grades.
      */
 	public static void gradeForm(String toGrade, String outFile) {
+		gradeForm(toGrade,outFile,"","","");
+	}
+
+	public static void gradeForm(String toGrade, String outFile, String studentDir, String keyDir, String CSVDir) {
+
+		makeDirectory(studentDir);
+		makeDirectory(keyDir);
+		makeDirectory(CSVDir);
+
 		try {
-			File inputFile = new File(toGrade);
+			File inputFile = new File(studentDir+toGrade);
 			String id = toGrade.replaceAll("[^\\d]","");
 			BufferedReader reader = new BufferedReader(new FileReader(inputFile));
 
@@ -437,7 +475,7 @@ public class QuizUtils {
 			while (!reader.readLine().contains("-----------------")) {
 				reader.readLine();
 			}
-			File keyFile = new File("key"+id+".txt");
+			File keyFile = new File(keyDir+"key"+id+".txt");
 			BufferedReader keyReader = new BufferedReader(new FileReader(keyFile));
 
 			String text, keyText;
@@ -485,9 +523,9 @@ public class QuizUtils {
 				csvString += (wrongAnswers.contains(i)?"X":"-")+",";
 			}
 
-			File f = new File(outFile);
+			File f = new File(CSVDir+outFile);
 			if(!f.exists()) {
-				PrintWriter writer = new PrintWriter(outFile, "UTF-8");
+				PrintWriter writer = new PrintWriter(CSVDir+outFile, "UTF-8");
 				String generated = "Test Title,File Name,Student Name,Period,# Correct (Out of "+((Integer)numOfProbs).toString()+"),Percentage,";
 				for (Integer i=1; i <= numOfProbs; i++) {
 					generated += i.toString() + ",";
@@ -498,7 +536,7 @@ public class QuizUtils {
 
 
 			PrintWriter writer = new PrintWriter(new FileOutputStream(
-					new File(outFile),
+					new File(CSVDir+outFile),
 					true));
 			writer.append(csvString+"\n");
 			writer.close();
@@ -642,9 +680,12 @@ public class QuizUtils {
 	 * @param testName the name of the test
 	 * @param numOfProbs the number of problems in the test
      */
-	public static void generateStudentForm(int studentID, String testName, int numOfProbs) {
+	public static void generateStudentForm(int studentID, String testName, int numOfProbs, String outDir) {
+
+		makeDirectory(outDir);
+
 		try {
-			PrintWriter writer = new PrintWriter(studentID+".txt", "UTF-8");
+			PrintWriter writer = new PrintWriter(outDir+studentID+".txt", "UTF-8");
 			writer.println("Test Title: "+testName);
 			writer.println("Student ID: "+studentID);
 			writer.println("Name: ");
@@ -669,6 +710,14 @@ public class QuizUtils {
 	public static void interactiveTestGen() {
 		try {
 			Scanner sc = new Scanner(System.in);
+			/*
+			System.out.println("------------------------------");
+			System.out.println("| Interactive Test Generator |");
+			System.out.println("------------------------------");
+			System.out.println("Warning: if you make a typo, you cannot undo.");
+			System.out.println("However, you can edit the generated file manually.");
+			System.out.println();
+			*/
 			System.out.println("Title: ");
 			String title = sc.nextLine();
 			PrintWriter writer = new PrintWriter(title.replace(" ","_")+".txt", "UTF-8");
@@ -717,7 +766,10 @@ public class QuizUtils {
 
 	/**
 	 *
-	 * @param args: -i=infile, -
+	 * @param args: arguments.
+	 *            make: interactively generate a test.
+	 *            generate: generate tests for students, given the template and student id list. Will make an intermediate XML file.
+	 *            grade: grades the tests, given a student answers directory and a key directory.
      */
 	public static void main(String[] args) {
 		if (args.length > 0) {
@@ -732,11 +784,14 @@ public class QuizUtils {
 				// grade tests
 			}
 		}
-		interactiveTestGen();
+		//interactiveTestGen();
 		//gradeForm("327672.txt","newtest.csv");
 		//gradeTest("key5.txt", "answerpdf5.txt");
-		//genXMLFromTemplate("fakeAssessment.txt","temp.xml");
-		//genPDFTestFromXML("temp.xml",327672);
+		//genXMLFromTemplate("Super_Test.txt","temp.xml");
+		//genPDFTestFromXML("temp.xml",123456);
+		genPDFTestFromXML("temp.xml",234568,"","out2/","out2/","keys2/");
+		//gradeForm("234567.txt","out2.csv","out1/","keys/","newcsv/");
+		//gradeForm("327672.txt","out.csv","","","newcsv/");
 		//generateNTests("out.txt", 3);
 		//gradeTest("key0.txt", "studentanswers.txt","krust.csv");
 		/*
