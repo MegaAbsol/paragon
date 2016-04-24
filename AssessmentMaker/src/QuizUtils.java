@@ -161,7 +161,10 @@ public class QuizUtils {
 				problemNumber += 1;
 
 			}
-
+			Paragraph footer = new Paragraph("Made with <3 just for Student ID #"+testNumber,defaultFont);
+			footer.setSpacingBefore(12);
+			footer.setAlignment(com.itextpdf.text.Element.ALIGN_CENTER);
+			document.add(footer);
 			generateStudentForm(testNumber,title,problemNumber-1,formOutDirectory);
 
 			keyWriter.close();
@@ -823,6 +826,7 @@ public class QuizUtils {
 
 			} while (!problemType.equals("q"));
 			writer.close();
+			System.out.println("Your generated test is located at: " + title.replace(" ","_")+".txt");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -849,7 +853,7 @@ public class QuizUtils {
 				// grade tests
 			}
 		}
-		easyGenerate();
+		//easyGenerate();
 		//interactiveTestGen();
 		//gradeForm("327672.txt","newtest.csv");
 		//gradeTest("key5.txt", "answerpdf5.txt");
