@@ -26,41 +26,77 @@
       <file leaf-file-name="QuizUtils.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/QuizUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.962963">
-              <caret line="716" column="0" selection-start-line="716" selection-start-column="0" selection-end-line="716" selection-end-column="0" />
+            <state vertical-scroll-proportion="-6.6666665">
+              <caret line="189" column="69" selection-start-line="189" selection-start-column="69" selection-end-line="189" selection-end-column="69" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#940#941#0" expanded="true" />
-                <element signature="e#973#974#0" expanded="true" />
                 <element signature="method#genPDFTestFromXML#1;class#QuizUtils#0" expanded="false" />
-                <element signature="e#3359#3368#0" expanded="true" />
-                <element signature="e#3673#3681#0" expanded="true" />
-                <element signature="docComment;method#genXMLFromTemplate#0;class#QuizUtils#0" expanded="false" />
                 <element signature="method#genXMLFromTemplate#1;class#QuizUtils#0" expanded="false" />
                 <element signature="method#gradeTest#1;class#QuizUtils#0" expanded="false" />
-                <element signature="e#12914#12923#0" expanded="true" />
-                <element signature="e#15237#15238#0" expanded="true" />
-                <element signature="e#15279#15280#0" expanded="true" />
-                <element signature="e#16703#16712#0" expanded="true" />
                 <element signature="method#genTestFromXML#0;class#QuizUtils#0" expanded="false" />
-                <element signature="e#19818#19827#0" expanded="true" />
-                <element signature="e#20132#20140#0" expanded="true" />
                 <element signature="method#generateNTests#1;class#QuizUtils#0" expanded="false" />
-                <element signature="e#25287#25296#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PythonRunnerFramework.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="outform.csv" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/outform.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="697089.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/697089.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="16" column="3" selection-start-line="16" selection-start-column="3" selection-end-line="16" selection-end-column="3" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="key697089.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/key697089.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="temp.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/temp.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="11" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sections.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/sections.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.50898206">
+              <caret line="10" column="40" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PythonRunnerFramework.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/PythonRunnerFramework.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.8678678">
-              <caret line="211" column="4" selection-start-line="211" selection-start-column="4" selection-end-line="211" selection-end-column="4" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="188" column="22" selection-start-line="188" selection-start-column="22" selection-end-line="188" selection-end-column="22" />
               <folding>
-                <element signature="e#4969#4977#0" expanded="true" />
-                <element signature="e#5679#5687#0" expanded="true" />
-                <element signature="e#5734#5742#0" expanded="true" />
+                <element signature="imports" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -114,8 +150,10 @@
         <option value="$PROJECT_DIR$/A_real_test.txt" />
         <option value="$PROJECT_DIR$/out1/234567.txt" />
         <option value="$PROJECT_DIR$/src/ids.txt" />
-        <option value="$PROJECT_DIR$/src/QuizUtils.java" />
         <option value="$PROJECT_DIR$/src/PythonRunnerFramework.java" />
+        <option value="$PROJECT_DIR$/sections.xml" />
+        <option value="$PROJECT_DIR$/697089.txt" />
+        <option value="$PROJECT_DIR$/src/QuizUtils.java" />
       </list>
     </option>
   </component>
@@ -150,6 +188,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -165,6 +205,38 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="AssessmentMaker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AssessmentMaker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AssessmentMaker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AssessmentMaker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AssessmentMaker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="101010" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -198,9 +270,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -515,7 +585,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="3" y="38" width="1346" height="688" extended-state="0" />
+    <frame x="3" y="38" width="1346" height="688" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -527,19 +597,19 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32871974" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17218044" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32871974" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17142858" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39965397" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32871974" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -555,7 +625,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="9" />
+      <option name="time" value="10" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -570,23 +640,11 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#940#941#0" expanded="true" />
-            <element signature="e#973#974#0" expanded="true" />
             <element signature="method#genPDFTestFromXML#1;class#QuizUtils#0" expanded="false" />
-            <element signature="e#3359#3368#0" expanded="true" />
-            <element signature="e#3673#3681#0" expanded="true" />
-            <element signature="docComment;method#genXMLFromTemplate#0;class#QuizUtils#0" expanded="false" />
             <element signature="method#genXMLFromTemplate#1;class#QuizUtils#0" expanded="false" />
             <element signature="method#gradeTest#1;class#QuizUtils#0" expanded="false" />
-            <element signature="e#12914#12923#0" expanded="true" />
-            <element signature="e#15237#15238#0" expanded="true" />
-            <element signature="e#15279#15280#0" expanded="true" />
-            <element signature="e#16703#16712#0" expanded="true" />
             <element signature="method#genTestFromXML#0;class#QuizUtils#0" expanded="false" />
-            <element signature="e#19818#19827#0" expanded="true" />
-            <element signature="e#20132#20140#0" expanded="true" />
             <element signature="method#generateNTests#1;class#QuizUtils#0" expanded="false" />
-            <element signature="e#25287#25296#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -594,58 +652,33 @@
     <entry file="file://$PROJECT_DIR$/src/PythonRunnerFramework.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="98" selection-start-line="16" selection-start-column="98" selection-end-line="16" selection-end-column="98" />
+          <caret line="188" column="22" selection-start-line="188" selection-start-column="22" selection-end-line="188" selection-end-column="22" />
           <folding>
-            <element signature="e#4969#4977#0" expanded="true" />
-            <element signature="e#5679#5687#0" expanded="true" />
-            <element signature="e#5734#5742#0" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/QuizUtils.java">
+    <entry file="file://$PROJECT_DIR$/tests/101010/101010.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#940#941#0" expanded="true" />
-            <element signature="e#973#974#0" expanded="true" />
-            <element signature="method#genPDFTestFromXML#1;class#QuizUtils#0" expanded="false" />
-            <element signature="e#3359#3368#0" expanded="true" />
-            <element signature="e#3673#3681#0" expanded="true" />
-            <element signature="docComment;method#genXMLFromTemplate#0;class#QuizUtils#0" expanded="false" />
-            <element signature="method#genXMLFromTemplate#1;class#QuizUtils#0" expanded="false" />
-            <element signature="method#gradeTest#1;class#QuizUtils#0" expanded="false" />
-            <element signature="e#12914#12923#0" expanded="true" />
-            <element signature="e#15237#15238#0" expanded="true" />
-            <element signature="e#15279#15280#0" expanded="true" />
-            <element signature="e#16703#16712#0" expanded="true" />
-            <element signature="method#genTestFromXML#0;class#QuizUtils#0" expanded="false" />
-            <element signature="e#19818#19827#0" expanded="true" />
-            <element signature="e#20132#20140#0" expanded="true" />
-            <element signature="method#generateNTests#1;class#QuizUtils#0" expanded="false" />
-            <element signature="e#25287#25296#0" expanded="true" />
-          </folding>
+          <caret line="11" column="3" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PythonRunnerFramework.java">
+    <entry file="file://$PROJECT_DIR$/ids.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding>
-            <element signature="e#4969#4977#0" expanded="true" />
-            <element signature="e#5679#5687#0" expanded="true" />
-            <element signature="e#5734#5742#0" expanded="true" />
-          </folding>
+          <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/out.txt">
+    <entry file="file://$PROJECT_DIR$/327672.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="2" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
           <folding />
         </state>
       </provider>
@@ -656,23 +689,117 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#940#941#0" expanded="true" />
-            <element signature="e#973#974#0" expanded="true" />
             <element signature="method#genPDFTestFromXML#1;class#QuizUtils#0" expanded="false" />
-            <element signature="e#3359#3368#0" expanded="true" />
-            <element signature="e#3673#3681#0" expanded="true" />
-            <element signature="docComment;method#genXMLFromTemplate#0;class#QuizUtils#0" expanded="false" />
             <element signature="method#genXMLFromTemplate#1;class#QuizUtils#0" expanded="false" />
             <element signature="method#gradeTest#1;class#QuizUtils#0" expanded="false" />
-            <element signature="e#12914#12923#0" expanded="true" />
-            <element signature="e#15237#15238#0" expanded="true" />
-            <element signature="e#15279#15280#0" expanded="true" />
-            <element signature="e#16703#16712#0" expanded="true" />
             <element signature="method#genTestFromXML#0;class#QuizUtils#0" expanded="false" />
-            <element signature="e#19818#19827#0" expanded="true" />
-            <element signature="e#20132#20140#0" expanded="true" />
             <element signature="method#generateNTests#1;class#QuizUtils#0" expanded="false" />
-            <element signature="e#25287#25296#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PythonRunnerFramework.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="188" column="22" selection-start-line="188" selection-start-column="22" selection-end-line="188" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/101010/101010.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="3" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ids.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/327672.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/QuizUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#genPDFTestFromXML#1;class#QuizUtils#0" expanded="false" />
+            <element signature="method#genXMLFromTemplate#1;class#QuizUtils#0" expanded="false" />
+            <element signature="method#gradeTest#1;class#QuizUtils#0" expanded="false" />
+            <element signature="method#genTestFromXML#0;class#QuizUtils#0" expanded="false" />
+            <element signature="method#generateNTests#1;class#QuizUtils#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PythonRunnerFramework.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="98" selection-start-line="16" selection-start-column="98" selection-end-line="16" selection-end-column="98" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/QuizUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#genPDFTestFromXML#1;class#QuizUtils#0" expanded="false" />
+            <element signature="method#genXMLFromTemplate#1;class#QuizUtils#0" expanded="false" />
+            <element signature="method#gradeTest#1;class#QuizUtils#0" expanded="false" />
+            <element signature="method#genTestFromXML#0;class#QuizUtils#0" expanded="false" />
+            <element signature="method#generateNTests#1;class#QuizUtils#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PythonRunnerFramework.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/out.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="2" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/QuizUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#genPDFTestFromXML#1;class#QuizUtils#0" expanded="false" />
+            <element signature="method#genXMLFromTemplate#1;class#QuizUtils#0" expanded="false" />
+            <element signature="method#gradeTest#1;class#QuizUtils#0" expanded="false" />
+            <element signature="method#genTestFromXML#0;class#QuizUtils#0" expanded="false" />
+            <element signature="method#generateNTests#1;class#QuizUtils#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -682,9 +809,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="131" column="9" selection-start-line="131" selection-start-column="9" selection-end-line="131" selection-end-column="9" />
           <folding>
-            <element signature="e#4969#4977#0" expanded="true" />
-            <element signature="e#5679#5687#0" expanded="true" />
-            <element signature="e#5734#5742#0" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -695,23 +820,11 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#940#941#0" expanded="true" />
-            <element signature="e#973#974#0" expanded="true" />
             <element signature="method#genPDFTestFromXML#1;class#QuizUtils#0" expanded="false" />
-            <element signature="e#3359#3368#0" expanded="true" />
-            <element signature="e#3673#3681#0" expanded="true" />
-            <element signature="docComment;method#genXMLFromTemplate#0;class#QuizUtils#0" expanded="false" />
             <element signature="method#genXMLFromTemplate#1;class#QuizUtils#0" expanded="false" />
             <element signature="method#gradeTest#1;class#QuizUtils#0" expanded="false" />
-            <element signature="e#12914#12923#0" expanded="true" />
-            <element signature="e#15237#15238#0" expanded="true" />
-            <element signature="e#15279#15280#0" expanded="true" />
-            <element signature="e#16703#16712#0" expanded="true" />
             <element signature="method#genTestFromXML#0;class#QuizUtils#0" expanded="false" />
-            <element signature="e#19818#19827#0" expanded="true" />
-            <element signature="e#20132#20140#0" expanded="true" />
             <element signature="method#generateNTests#1;class#QuizUtils#0" expanded="false" />
-            <element signature="e#25287#25296#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -722,23 +835,11 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#940#941#0" expanded="true" />
-            <element signature="e#973#974#0" expanded="true" />
             <element signature="method#genPDFTestFromXML#1;class#QuizUtils#0" expanded="false" />
-            <element signature="e#3359#3368#0" expanded="true" />
-            <element signature="e#3673#3681#0" expanded="true" />
-            <element signature="docComment;method#genXMLFromTemplate#0;class#QuizUtils#0" expanded="false" />
             <element signature="method#genXMLFromTemplate#1;class#QuizUtils#0" expanded="false" />
             <element signature="method#gradeTest#1;class#QuizUtils#0" expanded="false" />
-            <element signature="e#12914#12923#0" expanded="true" />
-            <element signature="e#15237#15238#0" expanded="true" />
-            <element signature="e#15279#15280#0" expanded="true" />
-            <element signature="e#16703#16712#0" expanded="true" />
             <element signature="method#genTestFromXML#0;class#QuizUtils#0" expanded="false" />
-            <element signature="e#19818#19827#0" expanded="true" />
-            <element signature="e#20132#20140#0" expanded="true" />
             <element signature="method#generateNTests#1;class#QuizUtils#0" expanded="false" />
-            <element signature="e#25287#25296#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -749,23 +850,11 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#940#941#0" expanded="true" />
-            <element signature="e#973#974#0" expanded="true" />
             <element signature="method#genPDFTestFromXML#1;class#QuizUtils#0" expanded="false" />
-            <element signature="e#3359#3368#0" expanded="true" />
-            <element signature="e#3673#3681#0" expanded="true" />
-            <element signature="docComment;method#genXMLFromTemplate#0;class#QuizUtils#0" expanded="false" />
             <element signature="method#genXMLFromTemplate#1;class#QuizUtils#0" expanded="false" />
             <element signature="method#gradeTest#1;class#QuizUtils#0" expanded="false" />
-            <element signature="e#12914#12923#0" expanded="true" />
-            <element signature="e#15237#15238#0" expanded="true" />
-            <element signature="e#15279#15280#0" expanded="true" />
-            <element signature="e#16703#16712#0" expanded="true" />
             <element signature="method#genTestFromXML#0;class#QuizUtils#0" expanded="false" />
-            <element signature="e#19818#19827#0" expanded="true" />
-            <element signature="e#20132#20140#0" expanded="true" />
             <element signature="method#generateNTests#1;class#QuizUtils#0" expanded="false" />
-            <element signature="e#25287#25296#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -776,23 +865,11 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#940#941#0" expanded="true" />
-            <element signature="e#973#974#0" expanded="true" />
             <element signature="method#genPDFTestFromXML#1;class#QuizUtils#0" expanded="false" />
-            <element signature="e#3359#3368#0" expanded="true" />
-            <element signature="e#3673#3681#0" expanded="true" />
-            <element signature="docComment;method#genXMLFromTemplate#0;class#QuizUtils#0" expanded="false" />
             <element signature="method#genXMLFromTemplate#1;class#QuizUtils#0" expanded="false" />
             <element signature="method#gradeTest#1;class#QuizUtils#0" expanded="false" />
-            <element signature="e#12914#12923#0" expanded="true" />
-            <element signature="e#15237#15238#0" expanded="true" />
-            <element signature="e#15279#15280#0" expanded="true" />
-            <element signature="e#16703#16712#0" expanded="true" />
             <element signature="method#genTestFromXML#0;class#QuizUtils#0" expanded="false" />
-            <element signature="e#19818#19827#0" expanded="true" />
-            <element signature="e#20132#20140#0" expanded="true" />
             <element signature="method#generateNTests#1;class#QuizUtils#0" expanded="false" />
-            <element signature="e#25287#25296#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -826,19 +903,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/temp.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="39" selection-start-line="0" selection-start-column="39" selection-end-line="0" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/out.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.61388886">
           <caret line="13" column="2" selection-start-line="13" selection-start-column="2" selection-end-line="13" selection-end-column="2" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -847,33 +915,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/QuizUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.962963">
-          <caret line="716" column="0" selection-start-line="716" selection-start-column="0" selection-end-line="716" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#940#941#0" expanded="true" />
-            <element signature="e#973#974#0" expanded="true" />
-            <element signature="method#genPDFTestFromXML#1;class#QuizUtils#0" expanded="false" />
-            <element signature="e#3359#3368#0" expanded="true" />
-            <element signature="e#3673#3681#0" expanded="true" />
-            <element signature="docComment;method#genXMLFromTemplate#0;class#QuizUtils#0" expanded="false" />
-            <element signature="method#genXMLFromTemplate#1;class#QuizUtils#0" expanded="false" />
-            <element signature="method#gradeTest#1;class#QuizUtils#0" expanded="false" />
-            <element signature="e#12914#12923#0" expanded="true" />
-            <element signature="e#15237#15238#0" expanded="true" />
-            <element signature="e#15279#15280#0" expanded="true" />
-            <element signature="e#16703#16712#0" expanded="true" />
-            <element signature="method#genTestFromXML#0;class#QuizUtils#0" expanded="false" />
-            <element signature="e#19818#19827#0" expanded="true" />
-            <element signature="e#20132#20140#0" expanded="true" />
-            <element signature="method#generateNTests#1;class#QuizUtils#0" expanded="false" />
-            <element signature="e#25287#25296#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -895,13 +936,66 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/PythonRunnerFramework.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.8678678">
-          <caret line="211" column="4" selection-start-line="211" selection-start-column="4" selection-end-line="211" selection-end-column="4" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="188" column="22" selection-start-line="188" selection-start-column="22" selection-end-line="188" selection-end-column="22" />
           <folding>
-            <element signature="e#4969#4977#0" expanded="true" />
-            <element signature="e#5679#5687#0" expanded="true" />
-            <element signature="e#5734#5742#0" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/key697089.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/697089.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="3" selection-start-line="16" selection-start-column="3" selection-end-line="16" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/temp.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="11" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/outform.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/QuizUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.6666665">
+          <caret line="189" column="69" selection-start-line="189" selection-start-column="69" selection-end-line="189" selection-end-column="69" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#genPDFTestFromXML#1;class#QuizUtils#0" expanded="false" />
+            <element signature="method#genXMLFromTemplate#1;class#QuizUtils#0" expanded="false" />
+            <element signature="method#gradeTest#1;class#QuizUtils#0" expanded="false" />
+            <element signature="method#genTestFromXML#0;class#QuizUtils#0" expanded="false" />
+            <element signature="method#generateNTests#1;class#QuizUtils#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sections.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.50898206">
+          <caret line="10" column="40" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
+          <folding />
         </state>
       </provider>
     </entry>

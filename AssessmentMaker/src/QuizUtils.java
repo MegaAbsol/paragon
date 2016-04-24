@@ -183,6 +183,223 @@ public class QuizUtils {
 			e.printStackTrace();
 		}
 	}
+
+	/**
+	 * Generates a personalized PDF test and an answer key from an XML file in the right directories. This PDF has
+	 * sections which group relevant questions together, such that they are not split apart. Header and footer text
+	 * is also supported, so instructions and word boxes can be used.
+	 *
+	 * @param template name of xml template to generate test from
+	 * @param testNumber student ID
+	 * @param templateDirectory directory where XML template is located
+	 * @param outDirectory directory to put output
+	 * @param formOutDirectory directory to put student entering forms
+	 * @param keyOutDirectory directory to put answer keys
+	 */
+	public static void genSectionsPDFTestFromXML(String template, int testNumber, String templateDirectory, String outDirectory, String formOutDirectory, String keyOutDirectory) {
+
+		makeDirectory(templateDirectory);
+		makeDirectory(outDirectory);
+		makeDirectory(formOutDirectory);
+		makeDirectory(keyOutDirectory);
+
+		com.itextpdf.text.Document document = new com.itextpdf.text.Document();
+		Font titleFont = FontFactory.getFont(FontFactory.COURIER_BOLD, 30, Font.NORMAL, new CMYKColor(0, 0, 0, 255));
+		Font sectionFont = FontFactory.getFont(FontFactory.COURIER, 18, Font.NORMAL, new CMYKColor(0, 0, 0, 255));
+		Font defaultFont = FontFactory.getFont(FontFactory.COURIER, 12, Font.NORMAL, new CMYKColor(0, 0, 0, 255));
+		try {
+			PdfWriter docwriter = PdfWriter.getInstance(document, new FileOutputStream(outDirectory+testNumber+".pdf"));
+			document.open();
+
+			File inputFile = new File(templateDirectory+template);
+			DocumentBuilderFactory dbFactory = DocumentBuilderFactory
+					.newInstance();
+			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			Document doc = dBuilder.parse(inputFile);
+			doc.getDocumentElement().normalize();
+
+			String title = doc.getDocumentElement().getAttribute("title");
+			Paragraph titlepg = new Paragraph(title,titleFont);
+			titlepg.setAlignment(com.itextpdf.text.Element.ALIGN_CENTER);
+			titlepg.setSpacingAfter(12);
+			document.add(titlepg);
+
+
+			Node docNode = doc.getDocumentElement();
+			//System.out.println("\nCurrent Element :" + nNode.getNodeName());
+
+			Element docElement = (Element) docNode;
+			try {
+				String header = docElement.getElementsByTagName("head")
+						.item(0).getTextContent();
+
+
+				Paragraph headdata = new Paragraph(header.trim(), sectionFont);
+				headdata.setAlignment(com.itextpdf.text.Element.ALIGN_CENTER);
+				titlepg.setSpacingAfter(12);
+				document.add(headdata);
+			} catch (Exception e) {
+
+			}
+
+			//document.add(new Paragraph("\n"));
+
+			PrintWriter keyWriter = new PrintWriter(keyOutDirectory+"key"+testNumber+".txt", "UTF-8");
+
+
+
+			//System.out.println("Root element :"
+			//		+ doc.getDocumentElement().getNodeName());
+			NodeList nList = doc.getElementsByTagName("section");
+			ArrayList<Integer> newOrder = new ArrayList<Integer>();
+			for (int i =0; i < nList.getLength(); i++) {
+				newOrder.add(i);
+			}
+			// shuffling the sections
+			Collections.shuffle(newOrder, new Random());
+
+			int problemNumber = 1;
+			// in case want newline at front
+			// writer.println();
+			int sectionNumber = 1;
+			for (int temp2 : newOrder) {
+				// each section
+
+				Node sNode = nList.item(temp2);
+				Element sElement = (Element) sNode;
+
+				try {
+					String header = sElement.getElementsByTagName("head")
+							.item(0).getTextContent();
+
+					Paragraph headdata = new Paragraph(header.trim(), sectionFont);
+					headdata.setSpacingAfter(12);
+					headdata.setSpacingBefore(30);
+					headdata.setAlignment(com.itextpdf.text.Element.ALIGN_CENTER);
+					document.add(headdata);
+				} catch (Exception e) {
+
+				}
+
+				NodeList qList = sElement.getElementsByTagName("problem");
+				ArrayList<Integer> qOrder = new ArrayList<Integer>();
+				for (int i =0; i < qList.getLength(); i++) {
+					qOrder.add(i);
+				}
+				// shuffling the sections
+				Collections.shuffle(qOrder, new Random());
+
+
+				for (int temp : qOrder) {
+					// each problem
+					ArrayList<String> out = new ArrayList<String>();
+
+					Node nNode = qList.item(temp);
+					//System.out.println("\nCurrent Element :" + nNode.getNodeName());
+
+					Element eElement = (Element) nNode;
+					String question = eElement.getElementsByTagName("question")
+							.item(0).getTextContent();
+					String correctAnswer = eElement
+							.getElementsByTagName("correctanswer").item(0)
+							.getTextContent();
+
+					String keyNumber = eElement
+							.getElementsByTagName("problemnumber").item(0)
+							.getTextContent();
+
+					String type = eElement.getAttribute("type");
+
+					// this part is for multiple choice questions
+					if (type.equals("multiplechoice")) {
+						out.add(correctAnswer);
+						NodeList answers = eElement.getElementsByTagName("choice");
+						for (int temp3 = 0; temp3 < answers.getLength(); temp3++) {
+							String choice = answers.item(temp3).getTextContent();
+							out.add(choice);
+							//System.out.println("other answer: " + choice);
+						}
+
+						Collections.shuffle(out, new Random());
+						//System.out.println(out);
+						int key = out.indexOf(correctAnswer);
+						//System.out.println(key);
+						Paragraph currentQuestion = new Paragraph(problemNumber + ". " + question + "\n", defaultFont);
+						currentQuestion.setKeepTogether(true);
+						currentQuestion.setSpacingAfter(12);
+						//currentQuestion.setIndentationLeft(20);
+						//currentQuestion.setFirstLineIndent(0);
+
+						keyWriter.println("mc`" + keyNumber + "`" + key);
+						for (int i = 0; i < out.size(); i++) {
+							currentQuestion.add("   " + "abcdefghijklmnopqrstuvwxyz".charAt(i) + ") " + out.get(i) + "\n");
+						}
+						document.add(currentQuestion);
+
+						// end mc questions
+					} else if (type.equals("shortanswer")) {
+						Paragraph currentQuestion = new Paragraph(problemNumber + ". " + question + "\n", defaultFont);
+						currentQuestion.setKeepTogether(true);
+						//currentQuestion.setIndentationLeft(20);
+						//currentQuestion.setFirstLineIndent(0);
+						currentQuestion.add("   Ans: _____________");
+						currentQuestion.setSpacingAfter(10);
+						document.add(currentQuestion);
+
+						keyWriter.println("sa`" + keyNumber + "`" + correctAnswer);
+					}
+
+					//document.add(new Paragraph("\n"));
+
+				/* text
+				else if (type.equals("text")) {
+					writer.println(question);
+					problemNumber -= 1;
+				} */
+					problemNumber += 1;
+				}
+
+				try {
+					String foot = sElement.getElementsByTagName("foot")
+							.item(0).getTextContent();
+
+					//Paragraph footer = new Paragraph("Made with <3 just for Student ID #"+testNumber,defaultFont);
+					Paragraph footer = new Paragraph(foot.trim(), sectionFont);
+					footer.setSpacingBefore(12);
+					footer.setSpacingAfter(30);
+					footer.setAlignment(com.itextpdf.text.Element.ALIGN_CENTER);
+					document.add(footer);
+				} catch (Exception e) {
+
+				}
+
+			}
+
+			try {
+				String foot = docElement.getElementsByTagName("foot")
+						.item(0).getTextContent();
+
+				//Paragraph footer = new Paragraph("Made with <3 just for Student ID #"+testNumber,defaultFont);
+				Paragraph footer = new Paragraph(foot.trim(), sectionFont);
+				footer.setSpacingBefore(12);
+				footer.setAlignment(com.itextpdf.text.Element.ALIGN_CENTER);
+				document.add(footer);
+			} catch (Exception e) {
+
+			}
+
+			generateStudentForm(testNumber,title,problemNumber-1,formOutDirectory);
+
+			keyWriter.close();
+
+			document.close();
+			docwriter.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	/**
 	 * Generates an XML file from a plaintext test template
 	 *
@@ -907,6 +1124,9 @@ public class QuizUtils {
 				// grade tests
 			}
 		}
+
+		genSectionsPDFTestFromXML("sections.xml",697089,"","","","");
+		//gradeForm("697089.txt","outform.csv");
 		//easyGenerate();
 		//interactiveTestGen();
 		//gradeForm("327672.txt","newtest.csv");
