@@ -654,7 +654,10 @@ public class QuizUtils {
 	 *
 	 * @param template template test file
 	 * @param howMany generate this many tests
+	 *
+	 * @deprecated don't use this
      */
+	@Deprecated
 	public static void generateNTests(String template, int howMany) {
 		generateNTests(template,howMany,"temp.xml");
 	}
@@ -665,6 +668,8 @@ public class QuizUtils {
 	 * @param template template test file
 	 * @param howMany generate this many tests
 	 * @param templateName xml file to generate to
+	 *
+	 *  @deprecated don't use this
      */
 	public static void generateNTests(String template, int howMany, String templateName) {
 		genXMLFromTemplate(template, templateName);
@@ -704,6 +709,65 @@ public class QuizUtils {
 		}
 	}
 
+	public static void generatePDFTests(String template, String templateDir, ArrayList<Integer> ids) {
+		genXMLFromTemplate(template,"temp.xml",templateDir,"temp/");
+		for (int id: ids) {
+			genPDFTestFromXML("temp.xml", id, "temp/", "tests/"+id+"/", "tests/"+id+"/", "keys/");
+		}
+	}
+
+	public static void generatePDFTests(String template, String templateDir, String outKeyDir, String outTestDir, ArrayList<Integer> ids) {
+		genXMLFromTemplate(template,"temp.xml",templateDir,"temp/");
+		for (int id: ids) {
+			genPDFTestFromXML("temp.xml", id, "temp/", outTestDir, outTestDir, outKeyDir);
+		}
+	}
+
+	public static ArrayList<Integer> getIDs(String filename) {
+		ArrayList<Integer> out = new ArrayList<Integer>();
+		try {
+			File inputFile = new File(filename);
+			BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+			String text;
+			while ((text = reader.readLine()) != null) {
+				out.add(Integer.parseInt(text));
+			}
+			reader.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return out;
+	}
+
+	public static void easyGenerate() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Where is your test file (directory)? Empty string for current dir. ");
+		String dir = sc.nextLine();
+		System.out.println("What is your test file called? Should be like 'Sample_Test.txt'. ");
+		String fn = sc.nextLine();
+		System.out.println("Where are the student ids located? ");
+		String idFile = sc.nextLine();
+		generatePDFTests(fn, dir, getIDs(idFile));
+	}
+
+	public static void easyGrader() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Where are the student handin tests? (directory)");
+		String directory = sc.nextLine();
+
+		try {
+			File dir = new File(directory);
+			File[] directoryListing = dir.listFiles();
+			if (directoryListing != null) {
+				for (File child : directoryListing) {
+					gradeForm(child.getName(), "grades.csv", directory, "keys/", "grades/");
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	/**
 	 * Interactive test generator.
 	 */
@@ -779,11 +843,13 @@ public class QuizUtils {
 			else if (args[0].equals("generate")) {
 				// generate test
 				// needs list of student ids
+				easyGenerate();
 			}
 			else if (args[0].equals("grade")) {
 				// grade tests
 			}
 		}
+		easyGenerate();
 		//interactiveTestGen();
 		//gradeForm("327672.txt","newtest.csv");
 		//gradeTest("key5.txt", "answerpdf5.txt");
