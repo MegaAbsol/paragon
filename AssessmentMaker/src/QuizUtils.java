@@ -27,6 +27,11 @@ import org.w3c.dom.Attr;
 public class QuizUtils {
 
 
+	/**
+	 * Makes a directory if it does not exist.
+	 *
+	 * @param dirname name of the directory to be created.
+     */
 	public static void makeDirectory(String dirname) {
 		new File(dirname).mkdirs();
 	}
@@ -47,6 +52,8 @@ public class QuizUtils {
 	 * @param testNumber student ID
 	 * @param templateDirectory directory where XML template is located
 	 * @param outDirectory directory to put output
+	 * @param formOutDirectory directory to put student entering forms
+	 * @param keyOutDirectory directory to put answer keys
      */
 	public static void genPDFTestFromXML(String template, int testNumber, String templateDirectory, String outDirectory, String formOutDirectory, String keyOutDirectory) {
 
@@ -186,6 +193,14 @@ public class QuizUtils {
 		genXMLFromTemplate(template,XMLName,"","");
 	}
 
+	/**
+	 * Generates an XML file from a plaintext test template
+	 *
+	 * @param template name of test file
+	 * @param XMLName name of xml file
+	 * @param templateDir directory where test is
+     * @param XMLDir directory to put xml
+     */
 	public static void genXMLFromTemplate(String template, String XMLName, String templateDir, String XMLDir) {
 
 		makeDirectory(templateDir);
@@ -455,6 +470,15 @@ public class QuizUtils {
 		gradeForm(toGrade,outFile,"","","");
 	}
 
+	/**
+	 * grades a student's test.
+	 *
+	 * @param toGrade student test filename
+	 * @param outFile output csv for grade data
+	 * @param studentDir directory where student test is located
+	 * @param keyDir directory where answer key is
+     * @param CSVDir directory where to put csv
+     */
 	public static void gradeForm(String toGrade, String outFile, String studentDir, String keyDir, String CSVDir) {
 
 		makeDirectory(studentDir);
@@ -553,8 +577,8 @@ public class QuizUtils {
 	/**
 	 * Generate a plaintext test from xml. Use when space is an issue, but otherwise the PDF looks nicer.
 	 *
-	 * @param template
-	 * @param testNumber
+	 * @param template xml template for test
+	 * @param testNumber student id
      */
 	public static void genTestFromXML(String template, int testNumber) {
 		try {
@@ -687,6 +711,7 @@ public class QuizUtils {
 	 * @param studentID the student id
 	 * @param testName the name of the test
 	 * @param numOfProbs the number of problems in the test
+	 * @param outDir directory to put student forms
      */
 	public static void generateStudentForm(int studentID, String testName, int numOfProbs, String outDir) {
 
@@ -696,7 +721,7 @@ public class QuizUtils {
 			PrintWriter writer = new PrintWriter(outDir+studentID+".txt", "UTF-8");
 			writer.println("Test Title: "+testName);
 			writer.println("Student ID: "+studentID);
-			writer.println("Name: ");
+			writer.println("Name (Last, First): ");
 			writer.println("Period: ");
 			writer.println();
 			writer.println("Instructions: For multiple choice questions, put the letter of the choice (i.e. \"a\" or \"c\").");
@@ -712,6 +737,13 @@ public class QuizUtils {
 		}
 	}
 
+	/**
+	 * generates tests for all student ids
+	 *
+	 * @param template name of plaintext test template
+	 * @param templateDir directory where test template is
+	 * @param ids arraylist of student ids
+     */
 	public static void generatePDFTests(String template, String templateDir, ArrayList<Integer> ids) {
 		genXMLFromTemplate(template,"temp.xml",templateDir,"temp/");
 		for (int id: ids) {
@@ -719,6 +751,15 @@ public class QuizUtils {
 		}
 	}
 
+	/**
+	 * generate tests for student ids with more customizability
+	 *
+	 * @param template name of plaintext test template
+	 * @param templateDir directory where test template is
+	 * @param outKeyDir directory where to put answer key
+	 * @param outTestDir directory where to put test + student form
+     * @param ids arraylist of student ids
+     */
 	public static void generatePDFTests(String template, String templateDir, String outKeyDir, String outTestDir, ArrayList<Integer> ids) {
 		genXMLFromTemplate(template,"temp.xml",templateDir,"temp/");
 		for (int id: ids) {
@@ -726,6 +767,12 @@ public class QuizUtils {
 		}
 	}
 
+	/**
+	 * extracts student ids from file
+	 *
+	 * @param filename file with student ids
+	 * @return an arraylist of student ids
+     */
 	public static ArrayList<Integer> getIDs(String filename) {
 		ArrayList<Integer> out = new ArrayList<Integer>();
 		try {
@@ -743,6 +790,9 @@ public class QuizUtils {
 		return out;
 	}
 
+	/**
+	 * easy generation of student tests given test template
+	 */
 	public static void easyGenerate() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Where is your test file (directory)? Empty string for current dir. ");
@@ -754,6 +804,9 @@ public class QuizUtils {
 		generatePDFTests(fn, dir, getIDs(idFile));
 	}
 
+	/**
+	 * easy grading of tests
+	 */
 	public static void easyGrader() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Where are the student handin tests? (directory)");
@@ -771,6 +824,7 @@ public class QuizUtils {
 			e.printStackTrace();
 		}
 	}
+
 	/**
 	 * Interactive test generator.
 	 */
@@ -859,7 +913,7 @@ public class QuizUtils {
 		//gradeTest("key5.txt", "answerpdf5.txt");
 		//genXMLFromTemplate("Super_Test.txt","temp.xml");
 		//genPDFTestFromXML("temp.xml",123456);
-		genPDFTestFromXML("temp.xml",234568,"","out2/","out2/","keys2/");
+		//genPDFTestFromXML("temp.xml",234568,"","out2/","out2/","keys2/");
 		//gradeForm("234567.txt","out2.csv","out1/","keys/","newcsv/");
 		//gradeForm("327672.txt","out.csv","","","newcsv/");
 		//generateNTests("out.txt", 3);
