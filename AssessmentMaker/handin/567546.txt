@@ -1,0 +1,27 @@
+Test Title: Fake Assessment
+Student ID: 567546
+Name (Last, First): tests\567546\567546.txt
+Period: Y
+
+Instructions: For multiple choice questions, put the letter of the choice (i.e. "a" or "c").
+For short answer questions, put the string answer (i.e. "answer" or "hello").
+Don't forget to fill out your name and period!
+-----------------
+1. B
+2. D
+3. A
+4. A
+5. A
+6. A
+7. B
+8. C
+9. D
+10. C
+11. D
+12. C
+13. A
+14. B
+15. C
+16. A
+17. C
+

@@ -45,7 +45,8 @@ public class QuizUtils {
 	}
 
 	/**
-	 * Generates a personalized PDF test and an answer key from an XML file in the right directories.
+	 * Generates a personalized PDF test and an answer key from an XML file in the right directories. XML must be in
+	 * test>question format.
 	 *
 	 * @param template name of xml template to generate test from
 	 * @param testNumber student ID
@@ -186,7 +187,8 @@ public class QuizUtils {
 	/**
 	 * Generates a personalized PDF test and an answer key from an XML file in the right directories. This PDF has
 	 * sections which group relevant questions together, such that they are not split apart. Header and footer text
-	 * is also supported, so instructions and word boxes can be used.
+	 * is also supported, so instructions and word boxes can be used. However, XML must be in test>section>question
+	 * format.
 	 *
 	 * @param template name of xml template to generate test from
 	 * @param testNumber student ID
@@ -398,6 +400,7 @@ public class QuizUtils {
 			e.printStackTrace();
 		}
 	}
+	//TODO make new generator that makes test>section>question format xmls instead of test>question
 
 	/**
 	 * Generates an XML file from a plaintext test template
@@ -705,7 +708,7 @@ public class QuizUtils {
 			File inputFile = new File(studentDir+toGrade);
 			String id = toGrade.replaceAll("[^\\d]","");
 			BufferedReader reader = new BufferedReader(new FileReader(inputFile));
-
+			System.out.println(inputFile);
 			// parse file
 			String title = reader.readLine().replace("Test Title:","").trim();
 			String studentID = reader.readLine().replace("Student ID:","").trim();
@@ -791,7 +794,7 @@ public class QuizUtils {
 	}
 
 	/**
-	 * grades a student's test.
+	 * grades a student's test. shows what wrong answer they put.
 	 *
 	 * @param toGrade student test filename
 	 * @param outFile output csv for grade data
@@ -1140,6 +1143,7 @@ public class QuizUtils {
 			File[] directoryListing = dir.listFiles();
 			if (directoryListing != null) {
 				for (File child : directoryListing) {
+					System.out.println(child.getName());
 					gradeForm(child.getName(), "grades.csv", directory, "keys/", "grades/");
 				}
 				sortCSV("grades.csv","grades/");
@@ -1150,6 +1154,12 @@ public class QuizUtils {
 	}
 
 
+	/**
+	 * Sorts a csv based on test title first, then by student name.
+	 *
+	 * @param csvFile filename
+	 * @param csvPath path to csv
+     */
 	public static void sortCSV(String csvFile, String csvPath) {
 		try {
 			File inputFile = new File(csvPath+csvFile);
@@ -1270,8 +1280,9 @@ public class QuizUtils {
 				easyGrader();
 			}
 		}
-
-		sortCSV("goodformat.csv","");
+		//easyGenerate();
+		easyGrader();
+		//sortCSV("goodformat.csv","");
 		//genSectionsPDFTestFromXML("sections.xml",697089,"","","","");
 		//gradeForm("697089.txt","outform.csv");
 		//easyGenerate();
