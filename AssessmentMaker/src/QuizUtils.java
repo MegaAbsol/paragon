@@ -16,7 +16,7 @@ import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.CMYKColor;
 import com.itextpdf.text.pdf.PdfWriter;
 
-import com.sun.deploy.util.StringUtils;
+//import org.apache.commons.lang.StringUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
@@ -1178,13 +1178,21 @@ public class QuizUtils {
 			writer.println(line1);
 			writer.println(line2);
 			for (ArrayList<String> s : csvLines) {
-				String joined = StringUtils.join(s,",");
+				String joined = join(s,",");
 				writer.println(joined);
 			}
 			writer.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static String join(ArrayList<String> s, String delimiter) {
+		String out = "";
+		for (String i : s){
+			out += i + delimiter;
+		}
+		return out;
 	}
 
 	/**
@@ -1271,7 +1279,7 @@ public class QuizUtils {
 			}
 		}
 
-		sortCSV("goodformat.csv","");
+		//sortCSV("goodformat.csv","");
 		//genSectionsPDFTestFromXML("sections.xml",697089,"","","","");
 		//gradeForm("697089.txt","outform.csv");
 		//easyGenerate();
