@@ -2,10 +2,8 @@ import java.io.*;
 //import java.nio.file.Files;
 //import java.nio.file.Paths;
 //import java.nio.file.StandardOpenOption;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
+import java.util.List;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
@@ -18,6 +16,7 @@ import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.CMYKColor;
 import com.itextpdf.text.pdf.PdfWriter;
 
+import com.sun.deploy.util.StringUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
@@ -713,7 +712,7 @@ public class QuizUtils {
 			if (!studentID.equals(id)) {
 				System.out.println("Warning: student ID ("+studentID+") does not match filename ("+id+")!");
 			}
-			String studentName = reader.readLine().replace("Name:","").trim();
+			String studentName = reader.readLine().replace("Name (Last, First):","").trim().replace(", ","_").replace(",","_");
 			String period = reader.readLine().replace("Period:","").trim();
 			// skip insignificant lines
 			while (!reader.readLine().contains("-----------------")) {
@@ -765,6 +764,113 @@ public class QuizUtils {
 			csvString += title+","+id+","+studentName+","+period+","+numCorrect+","+Math.round(10000.0*numCorrect/numOfProbs)/100.0+",";
 			for (int i=1;i<numOfProbs+1; i++) {
 				csvString += (wrongAnswers.contains(i)?"X":"-")+",";
+			}
+
+			File f = new File(CSVDir+outFile);
+			if(!f.exists()) {
+				PrintWriter writer = new PrintWriter(CSVDir+outFile, "UTF-8");
+				String generated = "Test Title,File Name,Student Name,Period,# Correct (Out of "+((Integer)numOfProbs).toString()+"),Percentage,";
+				for (Integer i=1; i <= numOfProbs; i++) {
+					generated += i.toString() + ",";
+				}
+				writer.write(generated+"\n\n");
+				writer.close();
+			}
+
+
+			PrintWriter writer = new PrintWriter(new FileOutputStream(
+					new File(CSVDir+outFile),
+					true));
+			writer.append(csvString+"\n");
+			writer.close();
+
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * grades a student's test.
+	 *
+	 * @param toGrade student test filename
+	 * @param outFile output csv for grade data
+	 * @param studentDir directory where student test is located
+	 * @param keyDir directory where answer key is
+	 * @param CSVDir directory where to put csv
+	 */
+	public static void gradeForm2(String toGrade, String outFile, String studentDir, String keyDir, String CSVDir) {
+
+		makeDirectory(studentDir);
+		makeDirectory(keyDir);
+		makeDirectory(CSVDir);
+
+		try {
+			File inputFile = new File(studentDir+toGrade);
+			String id = toGrade.replaceAll("[^\\d]","");
+			BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+
+			// parse file
+			String title = reader.readLine().replace("Test Title:","").trim();
+			String studentID = reader.readLine().replace("Student ID:","").trim();
+			if (!studentID.equals(id)) {
+				System.out.println("Warning: student ID ("+studentID+") does not match filename ("+id+")!");
+			}
+			String studentName = reader.readLine().replace("Name (Last, First):","").trim();
+			String period = reader.readLine().replace("Period:","").trim();
+			// skip insignificant lines
+			while (!reader.readLine().contains("-----------------")) {
+				reader.readLine();
+			}
+			File keyFile = new File(keyDir+"key"+id+".txt");
+			BufferedReader keyReader = new BufferedReader(new FileReader(keyFile));
+
+			String text, keyText;
+			ArrayList<Integer> wrongAnswers = new ArrayList<Integer>();
+			HashMap<Integer,String> theirAnswers = new HashMap<Integer, String>();
+			int numOfProbs = 0;
+			int numCorrect = 0;
+			while ((text = reader.readLine()) != null && (keyText = keyReader.readLine()) != null) {
+				// take out the leading question number
+				text = text.replaceFirst("[\\d]+\\.","").trim();
+
+				// parse the answer key
+				String problemType = keyText.split("`")[0];
+				String keyNumber = keyText.split("`")[1];
+				String correctAnswer = keyText.split("`")[2];
+				numOfProbs += 1;
+				if (problemType.equals("mc")) {
+					if ("abcdefghijklmnopqrstuvwxyz".indexOf(text.toLowerCase()) == Integer.parseInt(correctAnswer)) {
+						numCorrect += 1;
+					} else {
+						wrongAnswers.add(Integer.parseInt(keyNumber));
+						theirAnswers.put(Integer.parseInt(keyNumber),"X");
+					}
+				} else if (problemType.equals("sa")) {
+					if (text.toLowerCase().trim().equals(correctAnswer.toLowerCase().trim())) {
+						numCorrect += 1;
+					} else {
+						wrongAnswers.add(Integer.parseInt(keyNumber));
+						theirAnswers.put(Integer.parseInt(keyNumber),text.toLowerCase().trim());
+					}
+				}
+			}
+
+			while ((keyText = keyReader.readLine()) != null) {
+				String keyNumber = keyText.split(" ")[0];
+				numOfProbs += 1;
+				wrongAnswers.add(Integer.parseInt(keyNumber));
+			}
+
+			reader.close();
+			keyReader.close();
+
+			//System.out.println("they got "+numCorrect+" correct out of "+numOfProbs);
+			//System.out.println("they got "+wrongAnswers+" wrong.");
+			String csvString = "";
+			csvString += title+","+id+","+studentName+","+period+","+numCorrect+","+Math.round(10000.0*numCorrect/numOfProbs)/100.0+",";
+			for (int i=1;i<numOfProbs+1; i++) {
+				csvString += (wrongAnswers.contains(i)?theirAnswers.get(i):"-")+",";
 			}
 
 			File f = new File(CSVDir+outFile);
@@ -1036,7 +1142,46 @@ public class QuizUtils {
 				for (File child : directoryListing) {
 					gradeForm(child.getName(), "grades.csv", directory, "keys/", "grades/");
 				}
+				sortCSV("grades.csv","grades/");
 			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+
+	public static void sortCSV(String csvFile, String csvPath) {
+		try {
+			File inputFile = new File(csvPath+csvFile);
+			BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+
+			List<ArrayList<String>> csvLines = new ArrayList<ArrayList<String>>();
+			String text;
+			// ignore first 2 lines
+			String line1 = reader.readLine();
+			String line2 = reader.readLine();
+			// student data
+			while ((text = reader.readLine()) != null) {
+				ArrayList<String> line = new ArrayList<String>(Arrays.asList(text.split(",")));
+				csvLines.add(line);
+			}
+			Comparator<ArrayList<String>> comp = new Comparator<ArrayList<String>>() {
+				public int compare(ArrayList<String> csvLine1, ArrayList<String> csvLine2) {
+					// example is for numeric field 2
+					return (csvLine1.get(0).toLowerCase()+csvLine1.get(2).toLowerCase()).compareTo(
+							(csvLine2.get(0).toLowerCase()+csvLine2.get(2).toLowerCase()));
+				}
+			};
+			Collections.sort(csvLines, comp);
+			reader.close();
+			PrintWriter writer = new PrintWriter(csvPath+csvFile, "UTF-8");
+			writer.println(line1);
+			writer.println(line2);
+			for (ArrayList<String> s : csvLines) {
+				String joined = StringUtils.join(s,",");
+				writer.println(joined);
+			}
+			writer.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -1122,14 +1267,19 @@ public class QuizUtils {
 			}
 			else if (args[0].equals("grade")) {
 				// grade tests
+				easyGrader();
 			}
 		}
 
-		genSectionsPDFTestFromXML("sections.xml",697089,"","","","");
+		sortCSV("goodformat.csv","");
+		//genSectionsPDFTestFromXML("sections.xml",697089,"","","","");
 		//gradeForm("697089.txt","outform.csv");
 		//easyGenerate();
 		//interactiveTestGen();
-		//gradeForm("327672.txt","newtest.csv");
+		//genXMLFromTemplate("out.txt","temp2.xml");
+		//genPDFTestFromXML("temp2.xml",123987);
+		//gradeForm2("123987.txt","goodformat.csv","","","");
+		//gradeForm2("327672.txt","goodformat.csv","","","");
 		//gradeTest("key5.txt", "answerpdf5.txt");
 		//genXMLFromTemplate("Super_Test.txt","temp.xml");
 		//genPDFTestFromXML("temp.xml",123456);
