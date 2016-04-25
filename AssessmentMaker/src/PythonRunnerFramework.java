@@ -147,7 +147,7 @@ public class PythonRunnerFramework {
 			writer.close();
 			boolean timeout = p.waitFor(3, TimeUnit.SECONDS);
 			
-			if (timeout == false) {
+			if (!timeout) {
 				return "timeout";
 			}
 			

@@ -373,7 +373,7 @@ public class QuizUtils {
 				} catch (Exception e) {
 
 				}
-
+				sectionNumber += 1;
 			}
 
 			try {
