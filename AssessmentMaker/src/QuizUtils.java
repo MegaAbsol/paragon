@@ -69,7 +69,8 @@ public class QuizUtils {
 				cell = new PdfPCell();
 				cell.setCellEvent(new MyCellField(radiogroup, "" + i));
 				cell.setColspan(1);
-				cell.setBorderColor(BaseColor.BLUE);
+				cell.setBorderColor(BaseColor.DARK_GRAY);
+				cell.setBackgroundColor(BaseColor.LIGHT_GRAY);
 				table.addCell(cell);
 
 				cell = new PdfPCell(new Phrase(choices.get(i)));
@@ -108,7 +109,8 @@ public class QuizUtils {
 			//cell.setBorder(Rectangle.NO_BORDER);
 			cell.setCellEvent(new MyTextField(""+questionNumber));
 			cell.setMinimumHeight(20);
-			cell.setBorderColor(BaseColor.BLUE);
+			cell.setBorderColor(BaseColor.DARK_GRAY);
+			cell.setBackgroundColor(BaseColor.LIGHT_GRAY);
 			table.addCell(cell);
 
 			table.setKeepTogether(true);
