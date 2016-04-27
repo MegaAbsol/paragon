@@ -13,8 +13,7 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
 import com.itextpdf.text.*;
-import com.itextpdf.text.pdf.CMYKColor;
-import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.pdf.*;
 
 import com.sun.deploy.util.StringUtils;
 import org.w3c.dom.Document;
@@ -24,6 +23,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Attr;
 
 public class QuizUtils {
+
+
 
 
 	/**
@@ -42,6 +43,204 @@ public class QuizUtils {
      */
 	public static void genPDFTestFromXML(String template, int testNumber) {
 		genPDFTestFromXML(template, testNumber, "", "", "", "");
+	}
+
+	public static void addProblem(String question, ArrayList<String> choices, int questionNumber, com.itextpdf.text.Document document, PdfWriter writer) {
+		// needs access to document and writer
+		try {
+			PdfFormField radiogroup = PdfFormField.createRadioButton(writer, true);
+			radiogroup.setFieldName(""+questionNumber);
+			PdfPTable table = new PdfPTable(15);
+
+			table.setHorizontalAlignment(0);
+			table.setSpacingAfter(12);
+			PdfPCell cell;
+
+			cell = new PdfPCell(new Phrase(questionNumber+".   "+question));
+			cell.setBorder(Rectangle.NO_BORDER);
+
+			cell.setColspan(15);
+			cell.setMinimumHeight(20);
+			table.addCell(cell);
+
+
+			for (int i = 0; i < choices.size(); i++) {
+				// each choice
+				cell = new PdfPCell();
+				cell.setCellEvent(new MyCellField(radiogroup, "" + i));
+				cell.setColspan(1);
+				cell.setBorderColor(BaseColor.BLUE);
+				table.addCell(cell);
+
+				cell = new PdfPCell(new Phrase(choices.get(i)));
+				cell.setPaddingLeft(10);
+				cell.setVerticalAlignment(PdfPCell.ALIGN_MIDDLE);
+				cell.setBorder(Rectangle.NO_BORDER);
+				cell.setColspan(14);
+				table.addCell(cell);
+			}
+
+			table.setKeepTogether(true);
+			document.add(table);
+			writer.addAnnotation(radiogroup);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void addSAProblem(String question, int questionNumber, com.itextpdf.text.Document document, PdfWriter writer) {
+		// needs access to document and writer
+		try {
+
+			PdfPTable table = new PdfPTable(1);
+			table.setHorizontalAlignment(0);
+			table.setSpacingAfter(12);
+			PdfPCell cell;
+
+			cell = new PdfPCell(new Phrase(questionNumber+".   "+question));
+			cell.setBorder(Rectangle.NO_BORDER);
+			cell.setColspan(1);
+			cell.setMinimumHeight(20);
+			table.addCell(cell);
+
+			cell = new PdfPCell();
+			cell.setColspan(1);
+			//cell.setBorder(Rectangle.NO_BORDER);
+			cell.setCellEvent(new MyTextField(""+questionNumber));
+			cell.setMinimumHeight(20);
+			cell.setBorderColor(BaseColor.BLUE);
+			table.addCell(cell);
+
+			table.setKeepTogether(true);
+			document.add(table);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void genFancyPDFTestFromXML(String template, int testNumber, String templateDirectory, String outDirectory, String keyOutDirectory) {
+
+		makeDirectory(templateDirectory);
+		makeDirectory(outDirectory);
+		makeDirectory(keyOutDirectory);
+
+		com.itextpdf.text.Document document = new com.itextpdf.text.Document();
+		Font titleFont = FontFactory.getFont(FontFactory.COURIER_BOLD, 30, Font.NORMAL, new CMYKColor(0, 0, 0, 255));
+		Font defaultFont = FontFactory.getFont(FontFactory.COURIER, 12, Font.NORMAL, new CMYKColor(0, 0, 0, 255));
+		try {
+			PdfWriter docwriter = PdfWriter.getInstance(document, new FileOutputStream(outDirectory+testNumber+".pdf"));
+			document.open();
+
+			File inputFile = new File(templateDirectory+template);
+			DocumentBuilderFactory dbFactory = DocumentBuilderFactory
+					.newInstance();
+			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			Document doc = dBuilder.parse(inputFile);
+			doc.getDocumentElement().normalize();
+
+			String title = doc.getDocumentElement().getAttribute("title");
+			Paragraph titlepg = new Paragraph(title,titleFont);
+			titlepg.setAlignment(com.itextpdf.text.Element.ALIGN_CENTER);
+			titlepg.setSpacingAfter(12);
+			document.add(titlepg);
+			//document.add(new Paragraph("\n"));
+
+			PrintWriter keyWriter = new PrintWriter(keyOutDirectory+"key"+testNumber+".txt", "UTF-8");
+
+
+
+			//System.out.println("Root element :"
+			//		+ doc.getDocumentElement().getNodeName());
+			NodeList nList = doc.getElementsByTagName("problem");
+			ArrayList<Integer> newOrder = new ArrayList<Integer>();
+			for (int i =0; i < nList.getLength(); i++) {
+				newOrder.add(i);
+			}
+			Collections.shuffle(newOrder, new Random());
+
+			int problemNumber = 1;
+			// in case want newline at front
+			// writer.println();
+			for (int temp : newOrder) {
+				// each problem
+				ArrayList<String> out = new ArrayList<String>();
+
+				Node nNode = nList.item(temp);
+				//System.out.println("\nCurrent Element :" + nNode.getNodeName());
+
+				Element eElement = (Element) nNode;
+				String question = eElement.getElementsByTagName("question")
+						.item(0).getTextContent();
+				String correctAnswer = eElement
+						.getElementsByTagName("correctanswer").item(0)
+						.getTextContent();
+
+				String keyNumber = eElement
+						.getElementsByTagName("problemnumber").item(0)
+						.getTextContent();
+
+				String type = eElement.getAttribute("type");
+
+				// this part is for multiple choice questions
+				if (type.equals("multiplechoice")) {
+					out.add(correctAnswer);
+					NodeList answers = eElement.getElementsByTagName("choice");
+					for (int temp2 = 0; temp2 < answers.getLength(); temp2++) {
+						String choice = answers.item(temp2).getTextContent();
+						out.add(choice);
+						//System.out.println("other answer: " + choice);
+					}
+
+					Collections.shuffle(out, new Random());
+					//System.out.println(out);
+					int key = out.indexOf(correctAnswer);
+					//System.out.println(key);
+					//Paragraph currentQuestion = new Paragraph(problemNumber + ". " + question + "\n",defaultFont);
+					//currentQuestion.setKeepTogether(true);
+					//currentQuestion.setSpacingAfter(10);
+					//currentQuestion.setIndentationLeft(20);
+					//currentQuestion.setFirstLineIndent(0);
+
+					keyWriter.println("mc`"+keyNumber + "`" + key);
+					/*
+					for (int i = 0; i < out.size(); i++) {
+						currentQuestion.add("   "+"abcdefghijklmnopqrstuvwxyz".charAt(i)+") "+out.get(i)+"\n");
+					}*/
+					//document.add(currentQuestion);
+					addProblem(question,out,problemNumber,document,docwriter);
+
+
+					// end mc questions
+				} else if (type.equals("shortanswer")) {
+					addSAProblem(question,problemNumber,document,docwriter);
+
+					keyWriter.println("sa`"+keyNumber + "`" + correctAnswer);
+				}
+
+				//document.add(new Paragraph("\n"));
+
+				/* text
+				else if (type.equals("text")) {
+					writer.println(question);
+					problemNumber -= 1;
+				} */
+				problemNumber += 1;
+
+			}
+			Paragraph footer = new Paragraph("Made with <3 just for Student ID #"+testNumber,defaultFont);
+			footer.setSpacingBefore(12);
+			footer.setAlignment(com.itextpdf.text.Element.ALIGN_CENTER);
+			document.add(footer);
+			//generateStudentForm(testNumber,title,problemNumber-1,formOutDirectory);
+
+			keyWriter.close();
+
+			document.close();
+			docwriter.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -1281,7 +1480,8 @@ public class QuizUtils {
 			}
 		}
 		//easyGenerate();
-		easyGrader();
+		//easyGrader();
+		genFancyPDFTestFromXML("temp2.xml",123459,"","","");
 		//sortCSV("goodformat.csv","");
 		//genSectionsPDFTestFromXML("sections.xml",697089,"","","","");
 		//gradeForm("697089.txt","outform.csv");
