@@ -15,7 +15,7 @@ import javax.xml.transform.stream.StreamResult;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
 
-import com.sun.deploy.util.StringUtils;
+//import com.sun.deploy.util.StringUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
@@ -88,18 +88,61 @@ public class QuizUtils {
 			e.printStackTrace();
 		}
 	}
-
-	public static void gradePDF(String pdfFile) {
+	
+	public static void gradePDF(String pdfFile, String keyDir, String id, String CSVDir, String outFile) {
 		try {
 			PdfReader reader = new PdfReader(pdfFile);
 
 			AcroFields fields = reader.getAcroFields();
 
 			Set<String> fldNames = fields.getFields().keySet();
+			File keyFile = new File(keyDir+"key"+id+".txt");
+			BufferedReader keyReader = new BufferedReader(new FileReader(keyFile));
 
-			for (String fldName : fldNames) {
-				System.out.println(fldName + ": " + fields.getField(fldName));
+			String keyText;
+			ArrayList<Integer> wrongAnswers = new ArrayList<Integer>();
+			int numCorrect = 0;
+			int numOfProbs = fldNames.size();
+			int currentProb = 1;
+			while ((keyText = keyReader.readLine())!=null) {
+				String ans = fields.getField(""+currentProb);
+				String problemType = keyText.split("`")[0];
+				String keyNumber = keyText.split("`")[1];
+				String correctAnswer = keyText.split("`")[2];
+				//System.out.println("ans: "+ans);
+				//System.out.println(correctAnswer);
+				if ((correctAnswer.trim().toLowerCase()).equals(ans.trim().toLowerCase())) {
+					numCorrect += 1;
+				} else {
+					wrongAnswers.add(Integer.parseInt(keyNumber));
+				}
+				currentProb += 1;
 			}
+
+			String csvString = "";
+			//csvString += title+","+id+","+studentName+","+period+","+numCorrect+","+Math.round(10000.0*numCorrect/numOfProbs)/100.0+",";
+			for (int i=1;i<numOfProbs+1; i++) {
+				csvString += (wrongAnswers.contains(i)?"X":"-")+",";
+			}
+
+			File f = new File(CSVDir+outFile);
+			if(!f.exists()) {
+				PrintWriter writer = new PrintWriter(CSVDir+outFile, "UTF-8");
+				String generated = "Test Title,File Name,Student Name,Period,# Correct (Out of "+((Integer)numOfProbs).toString()+"),Percentage,";
+				for (Integer i=1; i <= numOfProbs; i++) {
+					generated += i.toString() + ",";
+				}
+				writer.write(generated+"\n\n");
+				writer.close();
+			}
+
+
+			PrintWriter writer = new PrintWriter(new FileOutputStream(
+					new File(CSVDir+outFile),
+					true));
+			writer.append(csvString+"\n");
+			writer.close();
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -1290,7 +1333,7 @@ public class QuizUtils {
 	public static void generatePDFTests(String template, String templateDir, ArrayList<Integer> ids) {
 		genXMLFromTemplate(template,"temp.xml",templateDir,"temp/");
 		for (int id: ids) {
-			genPDFTestFromXML("temp.xml", id, "temp/", "tests/"+id+"/", "tests/"+id+"/", "keys/");
+			genFancyPDFTestFromXML("temp.xml", id, "temp/", "tests/", "keys/");
 		}
 	}
 
@@ -1306,7 +1349,7 @@ public class QuizUtils {
 	public static void generatePDFTests(String template, String templateDir, String outKeyDir, String outTestDir, ArrayList<Integer> ids) {
 		genXMLFromTemplate(template,"temp.xml",templateDir,"temp/");
 		for (int id: ids) {
-			genPDFTestFromXML("temp.xml", id, "temp/", outTestDir, outTestDir, outKeyDir);
+			genFancyPDFTestFromXML("temp.xml", id, "temp/", outTestDir, outKeyDir);
 		}
 	}
 
@@ -1405,7 +1448,7 @@ public class QuizUtils {
 			writer.println(line1);
 			writer.println(line2);
 			for (ArrayList<String> s : csvLines) {
-				String joined = StringUtils.join(s,",");
+				String joined = join(s,",");
 				writer.println(joined);
 			}
 			writer.close();
@@ -1414,6 +1457,14 @@ public class QuizUtils {
 		}
 	}
 
+	public static String join(ArrayList<String> s, String delimiter) {
+		String out = "";
+		for (String i:s) {
+			out += i + ",";
+		}
+		return out.substring(out.length()-2);
+	}
+	
 	/**
 	 * Interactive test generator.
 	 */
@@ -1497,10 +1548,12 @@ public class QuizUtils {
 				easyGrader();
 			}
 		}
-		//easyGenerate();
+		//interactiveTestGen();
+		easyGenerate();
 		//easyGrader();
+		
 		//genFancyPDFTestFromXML("temp2.xml",123459,"","","");
-		gradePDF("123459.pdf");
+		//gradePDF("123459.pdf", "", "123459", "", "gradespls.csv");
 		//sortCSV("goodformat.csv","");
 		//genSectionsPDFTestFromXML("sections.xml",697089,"","","","");
 		//gradeForm("697089.txt","outform.csv");
