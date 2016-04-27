@@ -89,6 +89,22 @@ public class QuizUtils {
 		}
 	}
 
+	public static void gradePDF(String pdfFile) {
+		try {
+			PdfReader reader = new PdfReader(pdfFile);
+
+			AcroFields fields = reader.getAcroFields();
+
+			Set<String> fldNames = fields.getFields().keySet();
+
+			for (String fldName : fldNames) {
+				System.out.println(fldName + ": " + fields.getField(fldName));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	public static void addSAProblem(String question, int questionNumber, com.itextpdf.text.Document document, PdfWriter writer) {
 		// needs access to document and writer
 		try {
@@ -1483,7 +1499,8 @@ public class QuizUtils {
 		}
 		//easyGenerate();
 		//easyGrader();
-		genFancyPDFTestFromXML("temp2.xml",123459,"","","");
+		//genFancyPDFTestFromXML("temp2.xml",123459,"","","");
+		gradePDF("123459.pdf");
 		//sortCSV("goodformat.csv","");
 		//genSectionsPDFTestFromXML("sections.xml",697089,"","","","");
 		//gradeForm("697089.txt","outform.csv");
