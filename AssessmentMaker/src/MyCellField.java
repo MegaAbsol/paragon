@@ -18,6 +18,9 @@ public class MyCellField implements PdfPCellEvent {
     public void cellLayout(PdfPCell cell, Rectangle rectangle, PdfContentByte[] canvases) {
         final PdfWriter writer = canvases[0].getPdfWriter();
         RadioCheckField radio = new RadioCheckField(writer, rectangle, null, value);
+        radio.setCheckType(RadioCheckField.TYPE_CIRCLE);
+        radio.setBorderColor(GrayColor.GRAYBLACK);
+        radio.setBackgroundColor(GrayColor.GRAYWHITE);
         try {
             radiogroup.addKid(radio.getRadioField());
         } catch (final IOException ioe) {

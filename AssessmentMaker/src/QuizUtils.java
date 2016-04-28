@@ -67,15 +67,19 @@ public class QuizUtils {
 			for (int i = 0; i < choices.size(); i++) {
 				// each choice
 				cell = new PdfPCell();
+				cell.setPaddingTop(20);
+				cell.setPaddingBottom(20);
 				cell.setCellEvent(new MyCellField(radiogroup, "" + i));
+				cell.setPadding(3);
 				cell.setColspan(1);
-				cell.setBorderColor(BaseColor.DARK_GRAY);
-				cell.setBackgroundColor(BaseColor.LIGHT_GRAY);
+				//cell.setBorderColor(BaseColor.DARK_GRAY);
+				//cell.setBackgroundColor(BaseColor.LIGHT_GRAY);
+				cell.setBorder(Rectangle.NO_BORDER);
 				table.addCell(cell);
 
 				cell = new PdfPCell(new Phrase(choices.get(i)));
 				cell.setPaddingLeft(10);
-				cell.setVerticalAlignment(PdfPCell.ALIGN_MIDDLE);
+				cell.setVerticalAlignment(com.itextpdf.text.Element.ALIGN_MIDDLE);
 				cell.setBorder(Rectangle.NO_BORDER);
 				cell.setColspan(14);
 				table.addCell(cell);
@@ -89,10 +93,12 @@ public class QuizUtils {
 		}
 	}
 	
-	public static void gradePDF(String pdfFile, String keyDir, String id, String CSVDir, String outFile) {
+	public static void gradePDF(String pdfFile, String handIn, String keyDir, String CSVDir, String outFile) {
 		try {
-			PdfReader reader = new PdfReader(pdfFile);
-
+			makeDirectory(CSVDir);
+			PdfReader reader = new PdfReader(handIn+pdfFile);
+			String id = pdfFile.replace(".pdf","").trim();
+			System.out.println(id);
 			AcroFields fields = reader.getAcroFields();
 
 			Set<String> fldNames = fields.getFields().keySet();
@@ -104,6 +110,9 @@ public class QuizUtils {
 			int numCorrect = 0;
 			int numOfProbs = fldNames.size();
 			int currentProb = 1;
+			String name = keyReader.readLine();
+			String title = keyReader.readLine();
+			String period = keyReader.readLine();
 			while ((keyText = keyReader.readLine())!=null) {
 				String ans = fields.getField(""+currentProb);
 				String problemType = keyText.split("`")[0];
@@ -120,7 +129,7 @@ public class QuizUtils {
 			}
 
 			String csvString = "";
-			//csvString += title+","+id+","+studentName+","+period+","+numCorrect+","+Math.round(10000.0*numCorrect/numOfProbs)/100.0+",";
+			csvString += title+","+id+","+name+","+period+","+numCorrect+","+Math.round(10000.0*numCorrect/numOfProbs)/100.0+",";
 			for (int i=1;i<numOfProbs+1; i++) {
 				csvString += (wrongAnswers.contains(i)?"X":"-")+",";
 			}
@@ -128,7 +137,7 @@ public class QuizUtils {
 			File f = new File(CSVDir+outFile);
 			if(!f.exists()) {
 				PrintWriter writer = new PrintWriter(CSVDir+outFile, "UTF-8");
-				String generated = "Test Title,File Name,Student Name,Period,# Correct (Out of "+((Integer)numOfProbs).toString()+"),Percentage,";
+				String generated = "Test Title,StudentID,Student Name,Period,# Correct (Out of "+((Integer)numOfProbs).toString()+"),Percentage,";
 				for (Integer i=1; i <= numOfProbs; i++) {
 					generated += i.toString() + ",";
 				}
@@ -179,7 +188,7 @@ public class QuizUtils {
 		}
 	}
 
-	public static void genFancyPDFTestFromXML(String template, int testNumber, String templateDirectory, String outDirectory, String keyOutDirectory) {
+	public static void genFancyPDFTestFromXML(String template, String studentName, String sID, String period, String templateDirectory, String outDirectory, String keyOutDirectory) {
 
 		makeDirectory(templateDirectory);
 		makeDirectory(outDirectory);
@@ -189,7 +198,9 @@ public class QuizUtils {
 		Font titleFont = FontFactory.getFont(FontFactory.COURIER_BOLD, 30, Font.NORMAL, new CMYKColor(0, 0, 0, 255));
 		Font defaultFont = FontFactory.getFont(FontFactory.COURIER, 12, Font.NORMAL, new CMYKColor(0, 0, 0, 255));
 		try {
-			PdfWriter docwriter = PdfWriter.getInstance(document, new FileOutputStream(outDirectory+testNumber+".pdf"));
+			PdfWriter docwriter = PdfWriter.getInstance(document, new FileOutputStream(outDirectory+sID+".pdf"));
+			docwriter.setFullCompression();
+			//docwriter.setCompressionLevel(9);
 			document.open();
 
 			File inputFile = new File(templateDirectory+template);
@@ -199,6 +210,13 @@ public class QuizUtils {
 			Document doc = dBuilder.parse(inputFile);
 			doc.getDocumentElement().normalize();
 
+			Paragraph header = new Paragraph("Name: "+studentName.trim());
+			header.add("\nStudent ID: "+sID.trim());
+			header.add("\nPeriod: "+period.trim()+"\n");
+			header.setAlignment(com.itextpdf.text.Element.ALIGN_RIGHT);
+			//header.setSpacingAfter(12);
+			document.add(header);
+
 			String title = doc.getDocumentElement().getAttribute("title");
 			Paragraph titlepg = new Paragraph(title,titleFont);
 			titlepg.setAlignment(com.itextpdf.text.Element.ALIGN_CENTER);
@@ -206,8 +224,11 @@ public class QuizUtils {
 			document.add(titlepg);
 			//document.add(new Paragraph("\n"));
 
-			PrintWriter keyWriter = new PrintWriter(keyOutDirectory+"key"+testNumber+".txt", "UTF-8");
+			PrintWriter keyWriter = new PrintWriter(keyOutDirectory+"key"+sID+".txt", "UTF-8");
 
+			keyWriter.println(studentName);
+			keyWriter.println(title);
+			keyWriter.println(period);
 
 
 			//System.out.println("Root element :"
@@ -288,10 +309,10 @@ public class QuizUtils {
 				problemNumber += 1;
 
 			}
-			Paragraph footer = new Paragraph("Made with <3 just for Student ID #"+testNumber,defaultFont);
-			footer.setSpacingBefore(12);
-			footer.setAlignment(com.itextpdf.text.Element.ALIGN_CENTER);
-			document.add(footer);
+			//Paragraph footer = new Paragraph("Made with <3 just for Student ID #"+sID,defaultFont);
+			//footer.setSpacingBefore(12);
+			//footer.setAlignment(com.itextpdf.text.Element.ALIGN_CENTER);
+			//document.add(footer);
 			//generateStudentForm(testNumber,title,problemNumber-1,formOutDirectory);
 
 			keyWriter.close();
@@ -1333,7 +1354,16 @@ public class QuizUtils {
 	public static void generatePDFTests(String template, String templateDir, ArrayList<Integer> ids) {
 		genXMLFromTemplate(template,"temp.xml",templateDir,"temp/");
 		for (int id: ids) {
-			genFancyPDFTestFromXML("temp.xml", id, "temp/", "tests/", "keys/");
+			//genFancyPDFTestFromXML("temp.xml", id, "temp/", "tests/", "keys/");
+		}
+	}
+
+	public static void generatePDFTests(String template, String templateDir, String merLocation, String filter) {
+		genXMLFromTemplate(template,"temp.xml",templateDir,"temp/");
+		ArrayList<ArrayList<String>> data = DatabaseLoader.retrieve(merLocation,filter);
+		for (ArrayList<String> student: data) {
+			genFancyPDFTestFromXML("temp.xml",student.get(1),student.get(0),student.get(2),"temp/","tests/","keys/");
+			//genFancyPDFTestFromXML("temp.xml", id, "temp/", "tests/", "keys/");
 		}
 	}
 
@@ -1349,7 +1379,7 @@ public class QuizUtils {
 	public static void generatePDFTests(String template, String templateDir, String outKeyDir, String outTestDir, ArrayList<Integer> ids) {
 		genXMLFromTemplate(template,"temp.xml",templateDir,"temp/");
 		for (int id: ids) {
-			genFancyPDFTestFromXML("temp.xml", id, "temp/", outTestDir, outKeyDir);
+			//genFancyPDFTestFromXML("temp.xml", id, "temp/", outTestDir, outKeyDir);
 		}
 	}
 
@@ -1385,9 +1415,13 @@ public class QuizUtils {
 		String dir = sc.nextLine();
 		System.out.println("What is your test file called? Should be like 'Sample_Test.txt'. ");
 		String fn = sc.nextLine();
-		System.out.println("Where are the student ids located? ");
+		System.out.println("Where is .mer file (include path)? ");
 		String idFile = sc.nextLine();
-		generatePDFTests(fn, dir, getIDs(idFile));
+		System.out.println("What is the name of your class? Like: S2-- 02-- Algorithm/Data B-- 293-- Estep Mark");
+		String filter = sc.nextLine();
+
+		generatePDFTests(fn, dir, idFile, filter);
+		//generatePDFTests(fn, dir, getIDs(idFile));
 	}
 
 	/**
@@ -1404,7 +1438,8 @@ public class QuizUtils {
 			if (directoryListing != null) {
 				for (File child : directoryListing) {
 					System.out.println(child.getName());
-					gradeForm(child.getName(), "grades.csv", directory, "keys/", "grades/");
+					gradePDF(child.getName(), directory, "keys/", "gradess/", "grade.csv");
+					//gradeForm(child.getName(), "grades.csv", directory, "keys/", "grades/");
 				}
 				sortCSV("grades.csv","grades/");
 			}
@@ -1549,9 +1584,9 @@ public class QuizUtils {
 			}
 		}
 		//interactiveTestGen();
-		easyGenerate();
+		//easyGenerate();
 		//easyGrader();
-		
+		generatePDFTests("out.txt", "", "SMCS10_noGrades.mer", "S2-- 02-- Algorithm/Data B-- 293-- Estep Mark");
 		//genFancyPDFTestFromXML("temp2.xml",123459,"","","");
 		//gradePDF("123459.pdf", "", "123459", "", "gradespls.csv");
 		//sortCSV("goodformat.csv","");
