@@ -129,7 +129,7 @@ public class QuizUtils {
 			}
 
 			String csvString = "";
-			csvString += title+","+id+","+name+","+period+","+numCorrect+","+Math.round(10000.0*numCorrect/numOfProbs)/100.0+",";
+			csvString += title+","+id+","+name.replace(", ",",").replace(",","_")+","+period+","+numCorrect+","+Math.round(10000.0*numCorrect/numOfProbs)/100.0+",";
 			for (int i=1;i<numOfProbs+1; i++) {
 				csvString += (wrongAnswers.contains(i)?"X":"-")+",";
 			}
@@ -153,7 +153,7 @@ public class QuizUtils {
 			writer.close();
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 	}
 
@@ -178,7 +178,7 @@ public class QuizUtils {
 			cell.setCellEvent(new MyTextField(""+questionNumber));
 			cell.setMinimumHeight(20);
 			cell.setBorderColor(BaseColor.DARK_GRAY);
-			cell.setBackgroundColor(BaseColor.LIGHT_GRAY);
+			cell.setBackgroundColor(BaseColor.WHITE);
 			table.addCell(cell);
 
 			table.setKeepTogether(true);
@@ -1441,7 +1441,7 @@ public class QuizUtils {
 					gradePDF(child.getName(), directory, "keys/", "gradess/", "grade.csv");
 					//gradeForm(child.getName(), "grades.csv", directory, "keys/", "grades/");
 				}
-				sortCSV("grades.csv","grades/");
+				sortCSV("grade.csv","gradess/");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -1464,10 +1464,13 @@ public class QuizUtils {
 			String text;
 			// ignore first 2 lines
 			String line1 = reader.readLine();
+			//System.out.println(line1);
 			String line2 = reader.readLine();
 			// student data
 			while ((text = reader.readLine()) != null) {
+				//System.out.println(text);
 				ArrayList<String> line = new ArrayList<String>(Arrays.asList(text.split(",")));
+				//System.out.println(line);
 				csvLines.add(line);
 			}
 			Comparator<ArrayList<String>> comp = new Comparator<ArrayList<String>>() {
@@ -1477,13 +1480,16 @@ public class QuizUtils {
 							(csvLine2.get(0).toLowerCase()+csvLine2.get(2).toLowerCase()));
 				}
 			};
+			//System.out.println(csvLines);
 			Collections.sort(csvLines, comp);
 			reader.close();
+			//System.out.println(csvLines);
 			PrintWriter writer = new PrintWriter(csvPath+csvFile, "UTF-8");
 			writer.println(line1);
 			writer.println(line2);
 			for (ArrayList<String> s : csvLines) {
 				String joined = join(s,",");
+				//System.out.println(joined);
 				writer.println(joined);
 			}
 			writer.close();
@@ -1497,7 +1503,7 @@ public class QuizUtils {
 		for (String i:s) {
 			out += i + ",";
 		}
-		return out.substring(out.length()-2);
+		return out;
 	}
 	
 	/**
@@ -1585,8 +1591,9 @@ public class QuizUtils {
 		}
 		//interactiveTestGen();
 		//easyGenerate();
-		//easyGrader();
-		generatePDFTests("out.txt", "", "SMCS10_noGrades.mer", "S2-- 02-- Algorithm/Data B-- 293-- Estep Mark");
+		easyGrader();
+		//generatePDFTests("out.txt", "", "SMCS10_noGrades.mer", "S2-- 02-- Algorithm/Data B-- 293-- Estep Mark");
+		//gradePDF(String pdfFile, String handIn, String keyDir, String CSVDir, String outFile)
 		//genFancyPDFTestFromXML("temp2.xml",123459,"","","");
 		//gradePDF("123459.pdf", "", "123459", "", "gradespls.csv");
 		//sortCSV("goodformat.csv","");
