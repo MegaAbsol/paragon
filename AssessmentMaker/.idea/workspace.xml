@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/QuizUtils.java" line="1322" />
+    <bookmark url="file://$PROJECT_DIR$/src/QuizUtils.java" line="1631" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d9a90ecb-0d28-45a9-8952-3aa142e4b1c9" name="Default" comment="" />
@@ -26,13 +26,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="QuizUtils.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="QuizUtils.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/QuizUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7887789">
-              <caret line="1540" column="40" selection-start-line="1540" selection-start-column="40" selection-end-line="1540" selection-end-column="40" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="1339" column="13" selection-start-line="1339" selection-start-column="13" selection-end-line="1339" selection-end-column="13" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#3267#3276#0" expanded="true" />
                 <element signature="e#7843#7852#0" expanded="true" />
                 <element signature="e#8157#8165#0" expanded="true" />
                 <element signature="e#12749#12758#0" expanded="true" />
@@ -40,20 +40,12 @@
                 <element signature="e#18691#18700#0" expanded="true" />
                 <element signature="e#19583#19592#0" expanded="true" />
                 <element signature="e#19843#19851#0" expanded="true" />
-                <element signature="e#23668#23669#0" expanded="true" />
-                <element signature="e#23717#23718#0" expanded="true" />
-                <element signature="e#29191#29192#0" expanded="true" />
-                <element signature="e#29235#29236#0" expanded="true" />
                 <element signature="e#29944#29953#0" expanded="true" />
-                <element signature="e#32267#32268#0" expanded="true" />
-                <element signature="e#32309#32310#0" expanded="true" />
                 <element signature="e#33815#33824#0" expanded="true" />
                 <element signature="e#37440#37449#0" expanded="true" />
                 <element signature="e#37506#37523#0" expanded="true" />
                 <element signature="e#40781#40790#0" expanded="true" />
                 <element signature="e#41095#41103#0" expanded="true" />
-                <element signature="e#43214#43215#0" expanded="true" />
-                <element signature="e#43264#43265#0" expanded="true" />
                 <element signature="e#46717#46726#0" expanded="true" />
                 <element signature="e#48845#48864#0" expanded="true" />
                 <element signature="e#49158#49166#0" expanded="true" />
@@ -62,15 +54,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DatabaseLoader.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DatabaseLoader.java">
+      <file leaf-file-name="TestGUI.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/TestGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="35" column="43" selection-start-line="35" selection-start-column="43" selection-end-line="35" selection-end-column="88" />
+            <state vertical-scroll-proportion="0.3321918">
+              <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#484#492#0" expanded="true" />
+                <element signature="e#551#561#0" expanded="true" />
               </folding>
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestGUI.form" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/TestGUI.form">
+          <provider selected="true" editor-type-id="ui-designer">
+            <state />
           </provider>
         </entry>
       </file>
@@ -136,10 +137,8 @@
         <entry file="file://$PROJECT_DIR$/src/PythonRunnerFramework.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="27" column="43" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
+              <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -149,6 +148,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="JavaFXApplication" />
         <option value="Class" />
       </list>
     </option>
@@ -188,14 +188,17 @@
         <option value="$PROJECT_DIR$/src/DatabaseLoader.java" />
         <option value="$PROJECT_DIR$/src/MyCellField.java" />
         <option value="$PROJECT_DIR$/src/QuizUtils.java" />
+        <option value="$PROJECT_DIR$/src/TestJavaFX.java" />
+        <option value="$PROJECT_DIR$/src/TestGUI.form" />
+        <option value="$PROJECT_DIR$/src/TestGUI.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="x" value="-2" />
+    <option name="y" value="25" />
+    <option name="width" value="1924" />
+    <option name="height" value="1034" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -222,9 +225,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
-      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -284,6 +286,38 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TestGUI" />
+              <option name="myItemType" value="com.intellij.uiDesigner.projectView.FormNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AssessmentMaker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AssessmentMaker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AssessmentMaker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AssessmentMaker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -315,13 +349,14 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$USER_HOME$/Downloads/itextpdf-5.5.9.jar!/" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/Kevin/Documents/GitHub/paragon/AssessmentMaker/src/PythonRunnerFramework.java" />
@@ -338,31 +373,16 @@
       <recent name="C:\Users\Kevin\Documents\GitHub\paragon\AssessmentMaker" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.QuizUtils">
+  <component name="RunManager" selected="Application.TestGUI">
     <configuration default="false" name="QuizUtils" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="QuizUtils" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="AssessmentMaker" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="RadioButtons" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="RadioButtons" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENABLE_SWING_INSPECTOR" value="true" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="AssessmentMaker" />
@@ -402,6 +422,21 @@
     <configuration default="false" name="DatabaseLoader" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="DatabaseLoader" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="AssessmentMaker" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="TestGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="TestGUI" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -594,18 +629,6 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="filePath" />
-      <option name="vmParameters" />
-      <option name="alternativeJrePath" />
-      <option name="programParameters" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" />
-      <option name="isAlternativeJrePathEnabled" value="false" />
-      <envs />
-      <method />
-    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -672,18 +695,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Application.QuizUtils" />
-      <item index="1" class="java.lang.String" itemvalue="Application.RadioButtons" />
-      <item index="2" class="java.lang.String" itemvalue="Application.CreateRadioInTable" />
-      <item index="3" class="java.lang.String" itemvalue="Application.RadioGroupMultiPage2" />
-      <item index="4" class="java.lang.String" itemvalue="Application.DatabaseLoader" />
+      <item index="1" class="java.lang.String" itemvalue="Application.CreateRadioInTable" />
+      <item index="2" class="java.lang.String" itemvalue="Application.RadioGroupMultiPage2" />
+      <item index="3" class="java.lang.String" itemvalue="Application.DatabaseLoader" />
+      <item index="4" class="java.lang.String" itemvalue="Application.TestGUI" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.QuizUtils" />
-        <item index="1" class="java.lang.String" itemvalue="Application.DatabaseLoader" />
-        <item index="2" class="java.lang.String" itemvalue="Application.CreateRadioInTable" />
-        <item index="3" class="java.lang.String" itemvalue="Application.RadioGroupMultiPage2" />
-        <item index="4" class="java.lang.String" itemvalue="Application.RadioButtons" />
+        <item index="0" class="java.lang.String" itemvalue="Application.TestGUI" />
+        <item index="1" class="java.lang.String" itemvalue="Application.QuizUtils" />
+        <item index="2" class="java.lang.String" itemvalue="Application.DatabaseLoader" />
+        <item index="3" class="java.lang.String" itemvalue="Application.CreateRadioInTable" />
+        <item index="4" class="java.lang.String" itemvalue="Application.RadioGroupMultiPage2" />
       </list>
     </recent_temporary>
   </component>
@@ -701,31 +724,31 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-2" y="25" width="1924" height="1034" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15885799" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329653" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3280757" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39905363" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3280757" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32871974" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39965397" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329653" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32785088" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11288605" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32785088" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32871974" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39905363" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -750,12 +773,12 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/PythonRunnerFramework.java">
+    <entry file="file://$PROJECT_DIR$/src/PDFGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="43" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
+          <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -763,10 +786,24 @@
     <entry file="file://$PROJECT_DIR$/src/PythonRunnerFramework.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PythonRunnerFramework.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="43" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PythonRunnerFramework.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -775,7 +812,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#3267#3276#0" expanded="true" />
             <element signature="e#7843#7852#0" expanded="true" />
             <element signature="e#8157#8165#0" expanded="true" />
             <element signature="e#12749#12758#0" expanded="true" />
@@ -783,20 +820,12 @@
             <element signature="e#18691#18700#0" expanded="true" />
             <element signature="e#19583#19592#0" expanded="true" />
             <element signature="e#19843#19851#0" expanded="true" />
-            <element signature="e#23668#23669#0" expanded="true" />
-            <element signature="e#23717#23718#0" expanded="true" />
-            <element signature="e#29191#29192#0" expanded="true" />
-            <element signature="e#29235#29236#0" expanded="true" />
             <element signature="e#29944#29953#0" expanded="true" />
-            <element signature="e#32267#32268#0" expanded="true" />
-            <element signature="e#32309#32310#0" expanded="true" />
             <element signature="e#33815#33824#0" expanded="true" />
             <element signature="e#37440#37449#0" expanded="true" />
             <element signature="e#37506#37523#0" expanded="true" />
             <element signature="e#40781#40790#0" expanded="true" />
             <element signature="e#41095#41103#0" expanded="true" />
-            <element signature="e#43214#43215#0" expanded="true" />
-            <element signature="e#43264#43265#0" expanded="true" />
             <element signature="e#46717#46726#0" expanded="true" />
             <element signature="e#48845#48864#0" expanded="true" />
             <element signature="e#49158#49166#0" expanded="true" />
@@ -815,9 +844,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="189" column="46" selection-start-line="189" selection-start-column="46" selection-end-line="189" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -826,7 +853,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#3267#3276#0" expanded="true" />
             <element signature="e#7843#7852#0" expanded="true" />
             <element signature="e#8157#8165#0" expanded="true" />
             <element signature="e#12749#12758#0" expanded="true" />
@@ -834,20 +861,12 @@
             <element signature="e#18691#18700#0" expanded="true" />
             <element signature="e#19583#19592#0" expanded="true" />
             <element signature="e#19843#19851#0" expanded="true" />
-            <element signature="e#23668#23669#0" expanded="true" />
-            <element signature="e#23717#23718#0" expanded="true" />
-            <element signature="e#29191#29192#0" expanded="true" />
-            <element signature="e#29235#29236#0" expanded="true" />
             <element signature="e#29944#29953#0" expanded="true" />
-            <element signature="e#32267#32268#0" expanded="true" />
-            <element signature="e#32309#32310#0" expanded="true" />
             <element signature="e#33815#33824#0" expanded="true" />
             <element signature="e#37440#37449#0" expanded="true" />
             <element signature="e#37506#37523#0" expanded="true" />
             <element signature="e#40781#40790#0" expanded="true" />
             <element signature="e#41095#41103#0" expanded="true" />
-            <element signature="e#43214#43215#0" expanded="true" />
-            <element signature="e#43264#43265#0" expanded="true" />
             <element signature="e#46717#46726#0" expanded="true" />
             <element signature="e#48845#48864#0" expanded="true" />
             <element signature="e#49158#49166#0" expanded="true" />
@@ -859,9 +878,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="188" column="22" selection-start-line="188" selection-start-column="22" selection-end-line="188" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -884,7 +901,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#3267#3276#0" expanded="true" />
             <element signature="e#7843#7852#0" expanded="true" />
             <element signature="e#8157#8165#0" expanded="true" />
             <element signature="e#12749#12758#0" expanded="true" />
@@ -892,20 +909,12 @@
             <element signature="e#18691#18700#0" expanded="true" />
             <element signature="e#19583#19592#0" expanded="true" />
             <element signature="e#19843#19851#0" expanded="true" />
-            <element signature="e#23668#23669#0" expanded="true" />
-            <element signature="e#23717#23718#0" expanded="true" />
-            <element signature="e#29191#29192#0" expanded="true" />
-            <element signature="e#29235#29236#0" expanded="true" />
             <element signature="e#29944#29953#0" expanded="true" />
-            <element signature="e#32267#32268#0" expanded="true" />
-            <element signature="e#32309#32310#0" expanded="true" />
             <element signature="e#33815#33824#0" expanded="true" />
             <element signature="e#37440#37449#0" expanded="true" />
             <element signature="e#37506#37523#0" expanded="true" />
             <element signature="e#40781#40790#0" expanded="true" />
             <element signature="e#41095#41103#0" expanded="true" />
-            <element signature="e#43214#43215#0" expanded="true" />
-            <element signature="e#43264#43265#0" expanded="true" />
             <element signature="e#46717#46726#0" expanded="true" />
             <element signature="e#48845#48864#0" expanded="true" />
             <element signature="e#49158#49166#0" expanded="true" />
@@ -917,9 +926,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="188" column="22" selection-start-line="188" selection-start-column="22" selection-end-line="188" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -942,7 +949,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#3267#3276#0" expanded="true" />
             <element signature="e#7843#7852#0" expanded="true" />
             <element signature="e#8157#8165#0" expanded="true" />
             <element signature="e#12749#12758#0" expanded="true" />
@@ -950,20 +957,12 @@
             <element signature="e#18691#18700#0" expanded="true" />
             <element signature="e#19583#19592#0" expanded="true" />
             <element signature="e#19843#19851#0" expanded="true" />
-            <element signature="e#23668#23669#0" expanded="true" />
-            <element signature="e#23717#23718#0" expanded="true" />
-            <element signature="e#29191#29192#0" expanded="true" />
-            <element signature="e#29235#29236#0" expanded="true" />
             <element signature="e#29944#29953#0" expanded="true" />
-            <element signature="e#32267#32268#0" expanded="true" />
-            <element signature="e#32309#32310#0" expanded="true" />
             <element signature="e#33815#33824#0" expanded="true" />
             <element signature="e#37440#37449#0" expanded="true" />
             <element signature="e#37506#37523#0" expanded="true" />
             <element signature="e#40781#40790#0" expanded="true" />
             <element signature="e#41095#41103#0" expanded="true" />
-            <element signature="e#43214#43215#0" expanded="true" />
-            <element signature="e#43264#43265#0" expanded="true" />
             <element signature="e#46717#46726#0" expanded="true" />
             <element signature="e#48845#48864#0" expanded="true" />
             <element signature="e#49158#49166#0" expanded="true" />
@@ -975,9 +974,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="98" selection-start-line="16" selection-start-column="98" selection-end-line="16" selection-end-column="98" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -986,7 +983,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#3267#3276#0" expanded="true" />
             <element signature="e#7843#7852#0" expanded="true" />
             <element signature="e#8157#8165#0" expanded="true" />
             <element signature="e#12749#12758#0" expanded="true" />
@@ -994,20 +991,12 @@
             <element signature="e#18691#18700#0" expanded="true" />
             <element signature="e#19583#19592#0" expanded="true" />
             <element signature="e#19843#19851#0" expanded="true" />
-            <element signature="e#23668#23669#0" expanded="true" />
-            <element signature="e#23717#23718#0" expanded="true" />
-            <element signature="e#29191#29192#0" expanded="true" />
-            <element signature="e#29235#29236#0" expanded="true" />
             <element signature="e#29944#29953#0" expanded="true" />
-            <element signature="e#32267#32268#0" expanded="true" />
-            <element signature="e#32309#32310#0" expanded="true" />
             <element signature="e#33815#33824#0" expanded="true" />
             <element signature="e#37440#37449#0" expanded="true" />
             <element signature="e#37506#37523#0" expanded="true" />
             <element signature="e#40781#40790#0" expanded="true" />
             <element signature="e#41095#41103#0" expanded="true" />
-            <element signature="e#43214#43215#0" expanded="true" />
-            <element signature="e#43264#43265#0" expanded="true" />
             <element signature="e#46717#46726#0" expanded="true" />
             <element signature="e#48845#48864#0" expanded="true" />
             <element signature="e#49158#49166#0" expanded="true" />
@@ -1019,9 +1008,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1037,7 +1024,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#3267#3276#0" expanded="true" />
             <element signature="e#7843#7852#0" expanded="true" />
             <element signature="e#8157#8165#0" expanded="true" />
             <element signature="e#12749#12758#0" expanded="true" />
@@ -1045,20 +1032,12 @@
             <element signature="e#18691#18700#0" expanded="true" />
             <element signature="e#19583#19592#0" expanded="true" />
             <element signature="e#19843#19851#0" expanded="true" />
-            <element signature="e#23668#23669#0" expanded="true" />
-            <element signature="e#23717#23718#0" expanded="true" />
-            <element signature="e#29191#29192#0" expanded="true" />
-            <element signature="e#29235#29236#0" expanded="true" />
             <element signature="e#29944#29953#0" expanded="true" />
-            <element signature="e#32267#32268#0" expanded="true" />
-            <element signature="e#32309#32310#0" expanded="true" />
             <element signature="e#33815#33824#0" expanded="true" />
             <element signature="e#37440#37449#0" expanded="true" />
             <element signature="e#37506#37523#0" expanded="true" />
             <element signature="e#40781#40790#0" expanded="true" />
             <element signature="e#41095#41103#0" expanded="true" />
-            <element signature="e#43214#43215#0" expanded="true" />
-            <element signature="e#43264#43265#0" expanded="true" />
             <element signature="e#46717#46726#0" expanded="true" />
             <element signature="e#48845#48864#0" expanded="true" />
             <element signature="e#49158#49166#0" expanded="true" />
@@ -1070,160 +1049,111 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="131" column="9" selection-start-line="131" selection-start-column="9" selection-end-line="131" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/QuizUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#7843#7852#0" expanded="true" />
-            <element signature="e#8157#8165#0" expanded="true" />
-            <element signature="e#12749#12758#0" expanded="true" />
-            <element signature="e#13063#13071#0" expanded="true" />
-            <element signature="e#18691#18700#0" expanded="true" />
-            <element signature="e#19583#19592#0" expanded="true" />
-            <element signature="e#19843#19851#0" expanded="true" />
-            <element signature="e#23668#23669#0" expanded="true" />
-            <element signature="e#23717#23718#0" expanded="true" />
-            <element signature="e#29191#29192#0" expanded="true" />
-            <element signature="e#29235#29236#0" expanded="true" />
-            <element signature="e#29944#29953#0" expanded="true" />
-            <element signature="e#32267#32268#0" expanded="true" />
-            <element signature="e#32309#32310#0" expanded="true" />
-            <element signature="e#33815#33824#0" expanded="true" />
-            <element signature="e#37440#37449#0" expanded="true" />
-            <element signature="e#37506#37523#0" expanded="true" />
-            <element signature="e#40781#40790#0" expanded="true" />
-            <element signature="e#41095#41103#0" expanded="true" />
-            <element signature="e#43214#43215#0" expanded="true" />
-            <element signature="e#43264#43265#0" expanded="true" />
-            <element signature="e#46717#46726#0" expanded="true" />
-            <element signature="e#48845#48864#0" expanded="true" />
-            <element signature="e#49158#49166#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/QuizUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#7843#7852#0" expanded="true" />
-            <element signature="e#8157#8165#0" expanded="true" />
-            <element signature="e#12749#12758#0" expanded="true" />
-            <element signature="e#13063#13071#0" expanded="true" />
-            <element signature="e#18691#18700#0" expanded="true" />
-            <element signature="e#19583#19592#0" expanded="true" />
-            <element signature="e#19843#19851#0" expanded="true" />
-            <element signature="e#23668#23669#0" expanded="true" />
-            <element signature="e#23717#23718#0" expanded="true" />
-            <element signature="e#29191#29192#0" expanded="true" />
-            <element signature="e#29235#29236#0" expanded="true" />
-            <element signature="e#29944#29953#0" expanded="true" />
-            <element signature="e#32267#32268#0" expanded="true" />
-            <element signature="e#32309#32310#0" expanded="true" />
-            <element signature="e#33815#33824#0" expanded="true" />
-            <element signature="e#37440#37449#0" expanded="true" />
-            <element signature="e#37506#37523#0" expanded="true" />
-            <element signature="e#40781#40790#0" expanded="true" />
-            <element signature="e#41095#41103#0" expanded="true" />
-            <element signature="e#43214#43215#0" expanded="true" />
-            <element signature="e#43264#43265#0" expanded="true" />
-            <element signature="e#46717#46726#0" expanded="true" />
-            <element signature="e#48845#48864#0" expanded="true" />
-            <element signature="e#49158#49166#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/QuizUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#7843#7852#0" expanded="true" />
-            <element signature="e#8157#8165#0" expanded="true" />
-            <element signature="e#12749#12758#0" expanded="true" />
-            <element signature="e#13063#13071#0" expanded="true" />
-            <element signature="e#18691#18700#0" expanded="true" />
-            <element signature="e#19583#19592#0" expanded="true" />
-            <element signature="e#19843#19851#0" expanded="true" />
-            <element signature="e#23668#23669#0" expanded="true" />
-            <element signature="e#23717#23718#0" expanded="true" />
-            <element signature="e#29191#29192#0" expanded="true" />
-            <element signature="e#29235#29236#0" expanded="true" />
-            <element signature="e#29944#29953#0" expanded="true" />
-            <element signature="e#32267#32268#0" expanded="true" />
-            <element signature="e#32309#32310#0" expanded="true" />
-            <element signature="e#33815#33824#0" expanded="true" />
-            <element signature="e#37440#37449#0" expanded="true" />
-            <element signature="e#37506#37523#0" expanded="true" />
-            <element signature="e#40781#40790#0" expanded="true" />
-            <element signature="e#41095#41103#0" expanded="true" />
-            <element signature="e#43214#43215#0" expanded="true" />
-            <element signature="e#43264#43265#0" expanded="true" />
-            <element signature="e#46717#46726#0" expanded="true" />
-            <element signature="e#48845#48864#0" expanded="true" />
-            <element signature="e#49158#49166#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/QuizUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#7843#7852#0" expanded="true" />
-            <element signature="e#8157#8165#0" expanded="true" />
-            <element signature="e#12749#12758#0" expanded="true" />
-            <element signature="e#13063#13071#0" expanded="true" />
-            <element signature="e#18691#18700#0" expanded="true" />
-            <element signature="e#19583#19592#0" expanded="true" />
-            <element signature="e#19843#19851#0" expanded="true" />
-            <element signature="e#23668#23669#0" expanded="true" />
-            <element signature="e#23717#23718#0" expanded="true" />
-            <element signature="e#29191#29192#0" expanded="true" />
-            <element signature="e#29235#29236#0" expanded="true" />
-            <element signature="e#29944#29953#0" expanded="true" />
-            <element signature="e#32267#32268#0" expanded="true" />
-            <element signature="e#32309#32310#0" expanded="true" />
-            <element signature="e#33815#33824#0" expanded="true" />
-            <element signature="e#37440#37449#0" expanded="true" />
-            <element signature="e#37506#37523#0" expanded="true" />
-            <element signature="e#40781#40790#0" expanded="true" />
-            <element signature="e#41095#41103#0" expanded="true" />
-            <element signature="e#43214#43215#0" expanded="true" />
-            <element signature="e#43264#43265#0" expanded="true" />
-            <element signature="e#46717#46726#0" expanded="true" />
-            <element signature="e#48845#48864#0" expanded="true" />
-            <element signature="e#49158#49166#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/com/sun/org/apache/xerces/internal/jaxp/DocumentBuilderImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25">
-          <caret line="345" column="35" selection-start-line="345" selection-start-column="35" selection-end-line="345" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/java/io/FileOutputStream.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334">
-          <caret line="269" column="0" selection-start-line="269" selection-start-column="0" selection-end-line="269" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/QuizUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#3267#3276#0" expanded="true" />
+            <element signature="e#7843#7852#0" expanded="true" />
+            <element signature="e#8157#8165#0" expanded="true" />
+            <element signature="e#12749#12758#0" expanded="true" />
+            <element signature="e#13063#13071#0" expanded="true" />
+            <element signature="e#18691#18700#0" expanded="true" />
+            <element signature="e#19583#19592#0" expanded="true" />
+            <element signature="e#19843#19851#0" expanded="true" />
+            <element signature="e#29944#29953#0" expanded="true" />
+            <element signature="e#33815#33824#0" expanded="true" />
+            <element signature="e#37440#37449#0" expanded="true" />
+            <element signature="e#37506#37523#0" expanded="true" />
+            <element signature="e#40781#40790#0" expanded="true" />
+            <element signature="e#41095#41103#0" expanded="true" />
+            <element signature="e#46717#46726#0" expanded="true" />
+            <element signature="e#48845#48864#0" expanded="true" />
+            <element signature="e#49158#49166#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/QuizUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#3267#3276#0" expanded="true" />
+            <element signature="e#7843#7852#0" expanded="true" />
+            <element signature="e#8157#8165#0" expanded="true" />
+            <element signature="e#12749#12758#0" expanded="true" />
+            <element signature="e#13063#13071#0" expanded="true" />
+            <element signature="e#18691#18700#0" expanded="true" />
+            <element signature="e#19583#19592#0" expanded="true" />
+            <element signature="e#19843#19851#0" expanded="true" />
+            <element signature="e#29944#29953#0" expanded="true" />
+            <element signature="e#33815#33824#0" expanded="true" />
+            <element signature="e#37440#37449#0" expanded="true" />
+            <element signature="e#37506#37523#0" expanded="true" />
+            <element signature="e#40781#40790#0" expanded="true" />
+            <element signature="e#41095#41103#0" expanded="true" />
+            <element signature="e#46717#46726#0" expanded="true" />
+            <element signature="e#48845#48864#0" expanded="true" />
+            <element signature="e#49158#49166#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/QuizUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#3267#3276#0" expanded="true" />
+            <element signature="e#7843#7852#0" expanded="true" />
+            <element signature="e#8157#8165#0" expanded="true" />
+            <element signature="e#12749#12758#0" expanded="true" />
+            <element signature="e#13063#13071#0" expanded="true" />
+            <element signature="e#18691#18700#0" expanded="true" />
+            <element signature="e#19583#19592#0" expanded="true" />
+            <element signature="e#19843#19851#0" expanded="true" />
+            <element signature="e#29944#29953#0" expanded="true" />
+            <element signature="e#33815#33824#0" expanded="true" />
+            <element signature="e#37440#37449#0" expanded="true" />
+            <element signature="e#37506#37523#0" expanded="true" />
+            <element signature="e#40781#40790#0" expanded="true" />
+            <element signature="e#41095#41103#0" expanded="true" />
+            <element signature="e#46717#46726#0" expanded="true" />
+            <element signature="e#48845#48864#0" expanded="true" />
+            <element signature="e#49158#49166#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/QuizUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#3267#3276#0" expanded="true" />
+            <element signature="e#7843#7852#0" expanded="true" />
+            <element signature="e#8157#8165#0" expanded="true" />
+            <element signature="e#12749#12758#0" expanded="true" />
+            <element signature="e#13063#13071#0" expanded="true" />
+            <element signature="e#18691#18700#0" expanded="true" />
+            <element signature="e#19583#19592#0" expanded="true" />
+            <element signature="e#19843#19851#0" expanded="true" />
+            <element signature="e#29944#29953#0" expanded="true" />
+            <element signature="e#33815#33824#0" expanded="true" />
+            <element signature="e#37440#37449#0" expanded="true" />
+            <element signature="e#37506#37523#0" expanded="true" />
+            <element signature="e#40781#40790#0" expanded="true" />
+            <element signature="e#41095#41103#0" expanded="true" />
+            <element signature="e#46717#46726#0" expanded="true" />
+            <element signature="e#48845#48864#0" expanded="true" />
+            <element signature="e#49158#49166#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1321,40 +1251,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/QuizUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7887789">
-          <caret line="1540" column="40" selection-start-line="1540" selection-start-column="40" selection-end-line="1540" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#7843#7852#0" expanded="true" />
-            <element signature="e#8157#8165#0" expanded="true" />
-            <element signature="e#12749#12758#0" expanded="true" />
-            <element signature="e#13063#13071#0" expanded="true" />
-            <element signature="e#18691#18700#0" expanded="true" />
-            <element signature="e#19583#19592#0" expanded="true" />
-            <element signature="e#19843#19851#0" expanded="true" />
-            <element signature="e#23668#23669#0" expanded="true" />
-            <element signature="e#23717#23718#0" expanded="true" />
-            <element signature="e#29191#29192#0" expanded="true" />
-            <element signature="e#29235#29236#0" expanded="true" />
-            <element signature="e#29944#29953#0" expanded="true" />
-            <element signature="e#32267#32268#0" expanded="true" />
-            <element signature="e#32309#32310#0" expanded="true" />
-            <element signature="e#33815#33824#0" expanded="true" />
-            <element signature="e#37440#37449#0" expanded="true" />
-            <element signature="e#37506#37523#0" expanded="true" />
-            <element signature="e#40781#40790#0" expanded="true" />
-            <element signature="e#41095#41103#0" expanded="true" />
-            <element signature="e#43214#43215#0" expanded="true" />
-            <element signature="e#43264#43265#0" expanded="true" />
-            <element signature="e#46717#46726#0" expanded="true" />
-            <element signature="e#48845#48864#0" expanded="true" />
-            <element signature="e#49158#49166#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/DatabaseLoader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1416,9 +1312,66 @@
     <entry file="file://$PROJECT_DIR$/src/PythonRunnerFramework.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="43" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
+          <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/QuizUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1339" column="13" selection-start-line="1339" selection-start-column="13" selection-end-line="1339" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <element signature="e#3267#3276#0" expanded="true" />
+            <element signature="e#7843#7852#0" expanded="true" />
+            <element signature="e#8157#8165#0" expanded="true" />
+            <element signature="e#12749#12758#0" expanded="true" />
+            <element signature="e#13063#13071#0" expanded="true" />
+            <element signature="e#18691#18700#0" expanded="true" />
+            <element signature="e#19583#19592#0" expanded="true" />
+            <element signature="e#19843#19851#0" expanded="true" />
+            <element signature="e#29944#29953#0" expanded="true" />
+            <element signature="e#33815#33824#0" expanded="true" />
+            <element signature="e#37440#37449#0" expanded="true" />
+            <element signature="e#37506#37523#0" expanded="true" />
+            <element signature="e#40781#40790#0" expanded="true" />
+            <element signature="e#41095#41103#0" expanded="true" />
+            <element signature="e#46717#46726#0" expanded="true" />
+            <element signature="e#48845#48864#0" expanded="true" />
+            <element signature="e#49158#49166#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TestGUI.form">
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk.x86_64/jre/lib/rt.jar!/java/util/ArrayList.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34892085">
+          <caret line="203" column="0" selection-start-line="203" selection-start-column="0" selection-end-line="203" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk.x86_64/jre/lib/rt.jar!/javax/swing/JComboBox.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34892085">
+          <caret line="301" column="0" selection-start-line="301" selection-start-column="0" selection-end-line="301" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TestGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3321918">
+          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#484#492#0" expanded="true" />
+            <element signature="e#551#561#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1480,6 +1433,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
@@ -1499,7 +1453,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>pdfbox-app-2.0.0</last-edited>
+          <last-edited>itextpdf-5.5.9</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
