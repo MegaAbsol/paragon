@@ -111,7 +111,7 @@ public class TestGUI {
                     //System.out.println("getCurrentDirectory(): " + chooser.getCurrentDirectory());
                     //System.out.println("getSelectedFile() : " + chooser.getSelectedFile());
                     try {
-                        PrintWriter writer = new PrintWriter(chooser.getSelectedFile()+testname.getText().trim()+".txt", "UTF-8");
+                        PrintWriter writer = new PrintWriter(chooser.getSelectedFile()+"/"+testname.getText().trim()+".txt", "UTF-8");
                         writer.println(outstr);
                         writer.close();
                     } catch (Exception ex) {
