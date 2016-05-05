@@ -24,6 +24,10 @@ public class TestGUI {
     private JButton generateButton;
     private JTextField classname;
     private JButton keyOutputDirButton;
+    private JLabel fileNameField;
+    private JLabel merFileField;
+    private JLabel OutputField;
+    private JLabel keyOutField;
     private ArrayList<String> questions = new ArrayList<String>();
     private ArrayList<String[]> answers = new ArrayList<String[]>();
     private int cindex = 0;
@@ -138,6 +142,7 @@ public class TestGUI {
                     //System.out.println("getCurrentDirectory(): " + chooser.getCurrentDirectory());
                     System.out.println("getSelectedFile() : " + chooser.getSelectedFile());
                     testFile = chooser.getSelectedFile();
+                    fileNameField.setText((testFile.getAbsolutePath().length()>75)?testFile.getAbsolutePath().substring(0,72)+"...":testFile.getAbsolutePath());
 
                 } else {
                     System.out.println("No Selection ");
@@ -160,6 +165,9 @@ public class TestGUI {
                     System.out.println("getSelectedFile() : " + chooser.getSelectedFile());
                     merFile = chooser.getSelectedFile();
 
+                    merFileField.setText((merFile.getAbsolutePath().length()>75)?merFile.getAbsolutePath().substring(0,72)+"...":merFile.getAbsolutePath());
+
+
                 } else {
                     System.out.println("No Selection ");
                 }
@@ -180,6 +188,9 @@ public class TestGUI {
                     //System.out.println("getCurrentDirectory(): " + chooser.getCurrentDirectory());
                     System.out.println("getSelectedFile() : " + chooser.getSelectedFile());
                     outDir = chooser.getSelectedFile();
+
+                    OutputField.setText((outDir.getAbsolutePath().length()>75)?outDir.getAbsolutePath().substring(0,72)+"...":outDir.getAbsolutePath());
+
 
                 } else {
                     System.out.println("No Selection ");
@@ -212,6 +223,8 @@ public class TestGUI {
                     //System.out.println("getCurrentDirectory(): " + chooser.getCurrentDirectory());
                     System.out.println("getSelectedFile() : " + chooser.getSelectedFile());
                     keyOut = chooser.getSelectedFile();
+                    keyOutField.setText((keyOut.getAbsolutePath().length()>75)?keyOut.getAbsolutePath().substring(0,72)+"...":keyOut.getAbsolutePath());
+
 
                 } else {
                     System.out.println("No Selection ");
@@ -221,11 +234,11 @@ public class TestGUI {
     }
 
     public static void main(String[] args) {
-        //try {
-        //    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        //} catch (Exception e) {
-        //    e.printStackTrace();
-        //}
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         JFrame frame = new JFrame("TestGUI");
         frame.setContentPane(new TestGUI().panel1);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

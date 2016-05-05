@@ -157,7 +157,7 @@
                       <text value=".mer File..."/>
                     </properties>
                   </component>
-                  <component id="d8b87" class="javax.swing.JLabel">
+                  <component id="d8b87" class="javax.swing.JLabel" binding="fileNameField">
                     <constraints>
                       <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <minimum-size width="400" height="-1"/>
@@ -169,7 +169,7 @@
                       <text value="..."/>
                     </properties>
                   </component>
-                  <component id="f55d" class="javax.swing.JLabel">
+                  <component id="f55d" class="javax.swing.JLabel" binding="merFileField">
                     <constraints>
                       <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <minimum-size width="400" height="-1"/>
@@ -181,7 +181,7 @@
                       <text value="..."/>
                     </properties>
                   </component>
-                  <component id="9196a" class="javax.swing.JLabel">
+                  <component id="9196a" class="javax.swing.JLabel" binding="OutputField">
                     <constraints>
                       <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
                         <minimum-size width="400" height="-1"/>
@@ -225,9 +225,13 @@
                       <text value="Key Output Dir..."/>
                     </properties>
                   </component>
-                  <component id="4e74e" class="javax.swing.JLabel">
+                  <component id="4e74e" class="javax.swing.JLabel" binding="keyOutField">
                     <constraints>
-                      <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <minimum-size width="400" height="-1"/>
+                        <preferred-size width="400" height="-1"/>
+                        <maximum-size width="400" height="-1"/>
+                      </grid>
                     </constraints>
                     <properties>
                       <text value="..."/>
