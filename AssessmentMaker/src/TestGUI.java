@@ -28,6 +28,13 @@ public class TestGUI {
     private JLabel merFileField;
     private JLabel OutputField;
     private JLabel keyOutField;
+    private JButton studentFormDirectoryButton;
+    private JButton answerKeyDirectoryButton;
+    private JButton outputDirectoryButton1;
+    private JButton gradeTestsButton;
+    private JLabel SFLabel;
+    private JLabel AKLabel;
+    private JLabel OutCSVLabel;
     private ArrayList<String> questions = new ArrayList<String>();
     private ArrayList<String[]> answers = new ArrayList<String[]>();
     private int cindex = 0;
@@ -36,6 +43,9 @@ public class TestGUI {
     private File merFile;
     private File outDir;
     private File keyOut;
+    private File gradeSFDir;
+    private File AnswerDir;
+    private File outCSVDir;
 
     public String join(String[] s, String delimiter) {
         String out = "";
@@ -133,7 +143,7 @@ public class TestGUI {
                 super.mouseClicked(e);
                 JFileChooser chooser = new JFileChooser();
                 chooser.setCurrentDirectory(new java.io.File("."));
-                chooser.setDialogTitle("Choose a directory:");
+                chooser.setDialogTitle("Choose a file:");
                 //chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
                 chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
                 chooser.setAcceptAllFileFilterUsed(false);
@@ -155,7 +165,7 @@ public class TestGUI {
                 super.mouseClicked(e);
                 JFileChooser chooser = new JFileChooser();
                 chooser.setCurrentDirectory(new java.io.File("."));
-                chooser.setDialogTitle("Choose a directory:");
+                chooser.setDialogTitle("Choose a file:");
                 //chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
                 chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
                 chooser.setAcceptAllFileFilterUsed(false);
@@ -231,6 +241,84 @@ public class TestGUI {
                 }
             }
         });
+        studentFormDirectoryButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                JFileChooser chooser = new JFileChooser();
+                chooser.setCurrentDirectory(new java.io.File("."));
+                chooser.setDialogTitle("Choose a directory:");
+                //chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                chooser.setAcceptAllFileFilterUsed(false);
+
+                if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+                    //System.out.println("getCurrentDirectory(): " + chooser.getCurrentDirectory());
+                    System.out.println("getSelectedFile() : " + chooser.getSelectedFile());
+                    gradeSFDir = chooser.getSelectedFile();
+                    SFLabel.setText((gradeSFDir.getAbsolutePath().length()>75)?gradeSFDir.getAbsolutePath().substring(0,72)+"...":gradeSFDir.getAbsolutePath());
+
+
+                } else {
+                    System.out.println("No Selection ");
+                }
+            }
+        });
+        answerKeyDirectoryButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                JFileChooser chooser = new JFileChooser();
+                chooser.setCurrentDirectory(new java.io.File("."));
+                chooser.setDialogTitle("Choose a directory:");
+                //chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                chooser.setAcceptAllFileFilterUsed(false);
+
+                if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+                    //System.out.println("getCurrentDirectory(): " + chooser.getCurrentDirectory());
+                    System.out.println("getSelectedFile() : " + chooser.getSelectedFile());
+                    AnswerDir = chooser.getSelectedFile();
+                    AKLabel.setText((AnswerDir.getAbsolutePath().length()>75)?AnswerDir.getAbsolutePath().substring(0,72)+"...":AnswerDir.getAbsolutePath());
+
+
+                } else {
+                    System.out.println("No Selection ");
+                }
+            }
+        });
+        outputDirectoryButton1.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                JFileChooser chooser = new JFileChooser();
+                chooser.setCurrentDirectory(new java.io.File("."));
+                chooser.setDialogTitle("Choose a directory:");
+                //chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                chooser.setAcceptAllFileFilterUsed(false);
+
+                if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+                    //System.out.println("getCurrentDirectory(): " + chooser.getCurrentDirectory());
+                    System.out.println("getSelectedFile() : " + chooser.getSelectedFile());
+                    outCSVDir = chooser.getSelectedFile();
+                    OutCSVLabel.setText((outCSVDir.getAbsolutePath().length()>75)?outCSVDir.getAbsolutePath().substring(0,72)+"...":outCSVDir.getAbsolutePath());
+
+
+                } else {
+                    System.out.println("No Selection ");
+                }
+            }
+        });
+        gradeTestsButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                if (outCSVDir != null && gradeSFDir != null && AnswerDir != null) {
+                    QuizUtils.gradePDFDir(gradeSFDir,AnswerDir,new File(outCSVDir.getAbsolutePath()+"/grades.csv"));
+                }
+            }
+        });
     }
 
     public static void main(String[] args) {
@@ -239,7 +327,10 @@ public class TestGUI {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        JFrame frame = new JFrame("TestGUI");
+        //ImageIcon img = new ImageIcon("C:\\Users\\Kevin\\Pictures\\weeb\\hd neptunia\\NeptuniaReBirth1_128x128.png");
+        ImageIcon img = new ImageIcon("C:\\Users\\Kevin\\Pictures\\weeb\\hd neptunia\\NeptuniaReBirth1_0000.ico");
+        JFrame frame = new JFrame("Assessment Maker");
+        frame.setIconImage(img.getImage());
         frame.setContentPane(new TestGUI().panel1);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();

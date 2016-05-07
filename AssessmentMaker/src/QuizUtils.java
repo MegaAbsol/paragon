@@ -92,6 +92,76 @@ public class QuizUtils {
 			e.printStackTrace();
 		}
 	}
+
+	public static void gradePDFDir(File pdfDir, File keyDir, File outFile) {
+		File[] listOfFiles = pdfDir.listFiles();
+		for (File f:listOfFiles) {
+			gradePDF(f,keyDir,outFile);
+		}
+	}
+
+	public static void gradePDF(File pdfFile, File keyDir, File outFile) {
+		try {
+			PdfReader reader = new PdfReader(pdfFile.getAbsolutePath());
+			String id = pdfFile.getName().replace(".pdf","").trim();
+			System.out.println(id);
+			AcroFields fields = reader.getAcroFields();
+
+			Set<String> fldNames = fields.getFields().keySet();
+			File keyFile = new File(keyDir.getAbsolutePath()+"/key"+id+".txt");
+			BufferedReader keyReader = new BufferedReader(new FileReader(keyFile));
+
+			String keyText;
+			ArrayList<Integer> wrongAnswers = new ArrayList<Integer>();
+			int numCorrect = 0;
+			int numOfProbs = fldNames.size();
+			int currentProb = 1;
+			String name = keyReader.readLine();
+			String title = keyReader.readLine();
+			String period = keyReader.readLine();
+			while ((keyText = keyReader.readLine())!=null) {
+				String ans = fields.getField(""+currentProb);
+				String problemType = keyText.split("`")[0];
+				String keyNumber = keyText.split("`")[1];
+				String correctAnswer = keyText.split("`")[2];
+				//System.out.println("ans: "+ans);
+				//System.out.println(correctAnswer);
+				if ((correctAnswer.trim().toLowerCase()).equals(ans.trim().toLowerCase())) {
+					numCorrect += 1;
+				} else {
+					wrongAnswers.add(Integer.parseInt(keyNumber));
+				}
+				currentProb += 1;
+			}
+
+			String csvString = "";
+			csvString += title+","+id+","+name.replace(", ",",").replace(",","_")+","+period+","+numCorrect+","+Math.round(10000.0*numCorrect/numOfProbs)/100.0+",";
+			for (int i=1;i<numOfProbs+1; i++) {
+				csvString += (wrongAnswers.contains(i)?"X":"-")+",";
+			}
+
+			File f = outFile;
+			if(!f.exists()) {
+				PrintWriter writer = new PrintWriter(outFile.getAbsoluteFile(), "UTF-8");
+				String generated = "Test Title,StudentID,Student Name,Period,# Correct (Out of "+((Integer)numOfProbs).toString()+"),Percentage,";
+				for (Integer i=1; i <= numOfProbs; i++) {
+					generated += i.toString() + ",";
+				}
+				writer.write(generated+"\n\n");
+				writer.close();
+			}
+
+
+			PrintWriter writer = new PrintWriter(new FileOutputStream(
+					outFile,
+					true));
+			writer.append(csvString+"\n");
+			writer.close();
+
+		} catch (Exception e) {
+			//e.printStackTrace();
+		}
+	}
 	
 	public static void gradePDF(String pdfFile, String handIn, String keyDir, String CSVDir, String outFile) {
 		try {
