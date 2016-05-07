@@ -35,6 +35,8 @@ public class TestGUI {
     private JLabel SFLabel;
     private JLabel AKLabel;
     private JLabel OutCSVLabel;
+    private JProgressBar progressBar1;
+    private JProgressBar progressBar2;
     private ArrayList<String> questions = new ArrayList<String>();
     private ArrayList<String[]> answers = new ArrayList<String[]>();
     private int cindex = 0;
@@ -71,6 +73,7 @@ public class TestGUI {
                 maxcindex++;
                 cindex = maxcindex;
                 System.out.println(maxcindex);
+                problemdata.setText("");
             }
         });
         problemlist.addItemListener(new ItemListener() {
@@ -114,7 +117,7 @@ public class TestGUI {
                         outstr += join(answers.get(i), "\n") + "\n";
                     }
                 }
-
+                outstr = outstr.substring(0,outstr.length()-1);
                 JFileChooser chooser = new JFileChooser();
                 chooser.setCurrentDirectory(new java.io.File("."));
                 chooser.setDialogTitle("Choose a directory:");
@@ -126,7 +129,7 @@ public class TestGUI {
                     //System.out.println("getSelectedFile() : " + chooser.getSelectedFile());
                     try {
                         PrintWriter writer = new PrintWriter(chooser.getSelectedFile()+"/"+testname.getText().trim()+".txt", "UTF-8");
-                        writer.println(outstr);
+                        writer.print(outstr);
                         writer.close();
                     } catch (Exception ex) {
                         ex.printStackTrace();
@@ -212,9 +215,20 @@ public class TestGUI {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 String s;
+                progressBar1.setMaximum(100);
+                progressBar1.setValue(0);
+                //progressBar1.setStringPainted(true);
+                progressBar1.setString("Starting Generation...");
                 if (testFile != null && merFile != null && outDir != null && keyOut != null && (s = classname.getText()) != null) {
-                    QuizUtils.genXMLFromTemplate(testFile,new File("temp/temp.xml"));
-                    QuizUtils.generatePDFTests(new File("temp/temp.xml"),merFile,outDir,keyOut,s);
+                    progressBar1.setValue(10);
+                    progressBar1.setString("Generating...");
+                    QuizUtils.genXMLFromTemplate(testFile,new File(keyOut.getAbsolutePath()+"/"+"temp.xml"));
+                    progressBar1.setValue(30);
+                    QuizUtils.generatePDFTests(new File(keyOut.getAbsolutePath()+"/"+"temp.xml"),merFile,outDir,keyOut,s);
+                    progressBar1.setValue(100);
+                    progressBar1.setString("Forms Generated!");
+                } else {
+                    progressBar2.setString("Error: please fill all fields in");
                 }
             }
         });
@@ -314,8 +328,18 @@ public class TestGUI {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
+                progressBar2.setMaximum(100);
+                progressBar2.setValue(0);
+                //progressBar2.setStringPainted(true);
+                progressBar2.setString("Starting job...");
                 if (outCSVDir != null && gradeSFDir != null && AnswerDir != null) {
+                    progressBar2.setValue(10);
+                    progressBar2.setString("Grading...");
                     QuizUtils.gradePDFDir(gradeSFDir,AnswerDir,new File(outCSVDir.getAbsolutePath()+"/grades.csv"));
+                    progressBar2.setValue(100);
+                    progressBar2.setString("Done Grading!");
+                } else {
+                    progressBar2.setString("Error: please fill all fields in");
                 }
             }
         });

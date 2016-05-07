@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="AssessmentMaker:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/AssessmentMaker_jar</output-path>
+    <root id="archive" name="AssessmentMaker.jar">
+      <element id="module-output" name="AssessmentMaker" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/itextpdf-5.5.9.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
