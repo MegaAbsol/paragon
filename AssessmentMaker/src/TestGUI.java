@@ -327,10 +327,9 @@ public class TestGUI {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        //ImageIcon img = new ImageIcon("C:\\Users\\Kevin\\Pictures\\weeb\\hd neptunia\\NeptuniaReBirth1_128x128.png");
-        ImageIcon img = new ImageIcon("C:\\Users\\Kevin\\Pictures\\weeb\\hd neptunia\\NeptuniaReBirth1_0000.ico");
+        //ImageIcon img = new ImageIcon("pathtoiconhere");
         JFrame frame = new JFrame("Assessment Maker");
-        frame.setIconImage(img.getImage());
+        //frame.setIconImage(img.getImage());
         frame.setContentPane(new TestGUI().panel1);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();

@@ -38,17 +38,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TestGUI.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TestGUI.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/TestGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="329" column="10" selection-start-line="329" selection-start-column="10" selection-end-line="329" selection-end-column="10" />
+            <state vertical-scroll-proportion="0.26881722">
+              <caret line="319" column="13" selection-start-line="319" selection-start-column="13" selection-end-line="319" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TestGUI.form" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TestGUI.form" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/TestGUI.form">
           <provider selected="true" editor-type-id="ui-designer">
             <state />
@@ -706,7 +706,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1178,6 +1178,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/TestGUI.form">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9770115">
+          <caret line="5" column="48" selection-start-line="5" selection-start-column="48" selection-end-line="5" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/QuizUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-11.074074">
@@ -1190,21 +1201,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/TestGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="329" column="10" selection-start-line="329" selection-start-column="10" selection-end-line="329" selection-end-column="10" />
+        <state vertical-scroll-proportion="0.26881722">
+          <caret line="319" column="13" selection-start-line="319" selection-start-column="13" selection-end-line="319" selection-end-column="13" />
           <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/TestGUI.form">
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9770115">
-          <caret line="5" column="48" selection-start-line="5" selection-start-column="48" selection-end-line="5" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
       </provider>
     </entry>
   </component>
