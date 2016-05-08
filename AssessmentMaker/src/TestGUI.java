@@ -1,6 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -37,6 +39,16 @@ public class TestGUI {
     private JLabel OutCSVLabel;
     private JProgressBar progressBar1;
     private JProgressBar progressBar2;
+    private JTextArea textArea1;
+    private JTextArea textArea2;
+    private JCheckBox strictWarningsCheckBox;
+    private JButton pythonFileDirectoryButton;
+    private JButton outputCSVDirectoryButton;
+    private JButton runStudentProgramsButton;
+    private JTextArea textArea3;
+    private JButton runButton;
+    private JButton donTRunButton;
+    private JCheckBox promptOnWarningCheckBox;
     private ArrayList<String> questions = new ArrayList<String>();
     private ArrayList<String[]> answers = new ArrayList<String[]>();
     private int cindex = 0;
@@ -343,6 +355,29 @@ public class TestGUI {
                 }
             }
         });
+        strictWarningsCheckBox.addPropertyChangeListener(new PropertyChangeListener() {
+            @Override
+            public void propertyChange(PropertyChangeEvent evt) {
+                if (strictWarningsCheckBox.isSelected()) {
+                    promptOnWarningCheckBox.setEnabled(false);
+                    promptOnWarningCheckBox.setSelected(false);
+                } else {
+                    promptOnWarningCheckBox.setEnabled(true);
+                }
+            }
+        });
+//        strictWarningsCheckBox.addMouseListener(new MouseAdapter() {
+//            @Override
+//            public void mouseClicked(MouseEvent e) {
+//                super.mouseClicked(e);
+//                if (strictWarningsCheckBox.isSelected()) {
+//                    promptOnWarningCheckBox.setEnabled(false);
+//                    promptOnWarningCheckBox.setSelected(false);
+//                } else {
+//                    promptOnWarningCheckBox.setEnabled(true);
+//                }
+//            }
+//        });
     }
 
     public static void main(String[] args) {
