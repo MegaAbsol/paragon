@@ -500,6 +500,13 @@ public class TestGUI {
                         strictness = 0;
                     }
 
+                    for (String s:pinput.getText().split("\n")) {
+                        inputs.add(s);
+                    }
+                    for (String s:pinput.getText().split("\n")) {
+                        outputs.add(s);
+                    }
+
                     File[] directoryListing = pythonDir.listFiles();
                     if (directoryListing != null) {
                         for (File child : directoryListing) {
