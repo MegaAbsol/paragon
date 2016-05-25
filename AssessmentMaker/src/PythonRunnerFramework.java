@@ -185,7 +185,7 @@ public class PythonRunnerFramework {
 			writer.write(input+"\n");
 			writer.flush();
 			writer.close();
-			boolean timeout = p.waitFor(400, TimeUnit.MILLISECONDS);
+			boolean timeout = p.waitFor(1000, TimeUnit.MILLISECONDS);
 			
 			if (!timeout) {
 				return "timeout";

@@ -89,12 +89,12 @@ public class TestGUI {
             warnings += "WARNING: import detected! ";
         }
         if (warnings.length()>0) {
-            if (strictness == 1) {
+            if (strictness == 2) {
                 // don't run, just give them a 0
                 PythonRunnerFramework.giveZero(filename,inputs,pythonCSVDir);
                 return;
             }
-            else if (strictness == 2) {
+            else if (strictness == 1) {
                 // give a warning
                 ProcessBuilder pb = new ProcessBuilder("Notepad.exe", filename);
                 try {
@@ -118,6 +118,8 @@ public class TestGUI {
             else {
                 PythonRunnerFramework.generateCSV(filename,inputs,outputs,pythonCSVDir);
             }
+        } else {
+            PythonRunnerFramework.generateCSV(filename,inputs,outputs,pythonCSVDir);
         }
     }
 
@@ -450,7 +452,7 @@ public class TestGUI {
                     //System.out.println("getCurrentDirectory(): " + chooser.getCurrentDirectory());
                     System.out.println("getSelectedFile() : " + chooser.getSelectedFile());
                     pythonDir = chooser.getSelectedFile();
-                    pfd.setText((AnswerDir.getAbsolutePath().length() > 75) ? AnswerDir.getAbsolutePath().substring(0, 72) + "..." : AnswerDir.getAbsolutePath());
+                    pfd.setText((pythonDir.getAbsolutePath().length() > 75) ? pythonDir.getAbsolutePath().substring(0, 72) + "..." : pythonDir.getAbsolutePath());
 
 
                 } else {
@@ -474,7 +476,7 @@ public class TestGUI {
                     //System.out.println("getCurrentDirectory(): " + chooser.getCurrentDirectory());
                     System.out.println("getSelectedFile() : " + chooser.getSelectedFile());
                     pythonCSVDir = chooser.getSelectedFile();
-                    pcd.setText((AnswerDir.getAbsolutePath().length() > 75) ? AnswerDir.getAbsolutePath().substring(0, 72) + "..." : AnswerDir.getAbsolutePath());
+                    pcd.setText((pythonCSVDir.getAbsolutePath().length() > 75) ? pythonCSVDir.getAbsolutePath().substring(0, 72) + "..." : pythonCSVDir.getAbsolutePath());
 
 
                 } else {
@@ -488,6 +490,7 @@ public class TestGUI {
                 super.mouseClicked(e);
                 String inp, expout;
                 progressBar4.setMaximum(100);
+                progressBar4.setValue(0);
                 if (pythonDir != null && pythonCSVDir != null && (inp = pinput.getText()) != null && (expout = poutput.getText()) != null) {
                     // TODO
                     // for file in directory:
@@ -499,20 +502,29 @@ public class TestGUI {
                     } else {
                         strictness = 0;
                     }
-
+                    inputs = new ArrayList<String>();
+                    outputs = new ArrayList<String>();
+                    for (String s:pinput.getText().split("\n")) {
+                        System.out.println(s);
+                    }
                     for (String s:pinput.getText().split("\n")) {
                         inputs.add(s);
                     }
-                    for (String s:pinput.getText().split("\n")) {
+                    for (String s:poutput.getText().split("\n")) {
                         outputs.add(s);
                     }
-
+                    progressBar4.setValue(30);
                     File[] directoryListing = pythonDir.listFiles();
+                    double count = 0.0;
                     if (directoryListing != null) {
                         for (File child : directoryListing) {
                             // Do something with child
+                            progressBar4.setValue(30+(int)(70.0*count/directoryListing.length));
                             gradeSingleProgram(child.getAbsolutePath());
+                            count++;
                         }
+                        progressBar4.setValue(100);
+
                     } else {
                         // Handle the case where dir is not really a directory.
                         // Checking dir.isDirectory() above would not be sufficient
