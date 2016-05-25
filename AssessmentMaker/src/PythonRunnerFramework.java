@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.concurrent.TimeUnit;
@@ -20,7 +21,7 @@ public class PythonRunnerFramework {
 	 * @param inputs list of inputs to enter to program
 	 * @param outputs list of outputs that are expected
      */
-	public static void generateCSV(String filename, ArrayList<String> inputs, ArrayList<String> outputs) {
+	public static void generateCSV(String filename, ArrayList<String> inputs, ArrayList<String> outputs, File outDir) {
 		try {
 			ArrayList<String> data = test(filename, inputs, outputs);
 			String csvString = "";
@@ -29,13 +30,15 @@ public class PythonRunnerFramework {
 			csvString += occurrences.toString() + ",";
 			
 			csvString += data.get(0) +",";
+			// i realize i could have just done from int i=0 and cut out the previous line, but for readability's sake
+			// because data[0] is warnings, after that are the answers
 			for (int i=1;i<data.size(); i++) {
 				csvString += data.get(i) + ",";
 			}
 			
-			File f = new File("programscore.csv");
+			File f = new File(outDir.getAbsolutePath()+"/programscore.csv");
 			if(!f.exists()) { 
-				PrintWriter writer = new PrintWriter("programscore.csv", "UTF-8");
+				PrintWriter writer = new PrintWriter(outDir.getAbsolutePath()+"/programscore.csv", "UTF-8");
 				String generated = "File Name,Score,Warnings,";
 				for (Integer i=1; i <= inputs.size(); i++) {
 					generated += "Test "+i.toString() + ",";
@@ -46,7 +49,44 @@ public class PythonRunnerFramework {
 			
 			
 			PrintWriter writer = new PrintWriter(new FileOutputStream(
-					new File("programscore.csv"),
+					new File(outDir.getAbsolutePath()+"/programscore.csv"),
+					true));
+			writer.append(csvString+"\n");
+			writer.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Gives a zero for a given file. Used when program does not meet prerequisites.
+	 * @param filename filename of python program to test
+	 * @param inputs amount of inputs that were supposed to have been used
+     */
+	public static void giveZero(String filename, ArrayList<String> inputs, File outDir) {
+		try {
+			ArrayList<String> data = inputs;
+			String csvString = "";
+			csvString += filename+",";
+			Integer occurrences = 0;
+			csvString += occurrences.toString() + ",";
+
+			csvString += "FAILED WITH STRICT WARNINGS,";
+
+			File f = new File(outDir.getAbsolutePath()+"/programscore.csv");
+			if(!f.exists()) {
+				PrintWriter writer = new PrintWriter(outDir.getAbsolutePath()+"/programscore.csv", "UTF-8");
+				String generated = "File Name,Score,Warnings,";
+				for (Integer i=1; i <= inputs.size(); i++) {
+					generated += "Test "+i.toString() + ",";
+				}
+				writer.write(generated+"\n\n");
+				writer.close();
+			}
+
+
+			PrintWriter writer = new PrintWriter(new FileOutputStream(
+					new File(outDir.getAbsolutePath()+"/programscore.csv"),
 					true));
 			writer.append(csvString+"\n");
 			writer.close();
@@ -174,6 +214,8 @@ public class PythonRunnerFramework {
 		}
 	}
 
+
+
 	/**
 	 * tests program multiple times
 	 *
@@ -221,7 +263,7 @@ public class PythonRunnerFramework {
 			outputs.add("1");
 		}
 		
-		generateCSV("test.py",inputs,outputs);
+		//generateCSV("test.py",inputs,outputs);
 	}
 
 }

@@ -39,19 +39,17 @@ public class TestGUI {
     private JLabel OutCSVLabel;
     private JProgressBar progressBar1;
     private JProgressBar progressBar2;
-    private JTextArea textArea1;
-    private JTextArea textArea2;
+    private JTextArea pinput;
+    private JTextArea poutput;
     private JCheckBox strictWarningsCheckBox;
     private JButton pythonFileDirectoryButton;
     private JButton outputCSVDirectoryButton;
     private JButton runStudentProgramsButton;
-    private JTextArea textArea3;
-    private JButton runButton;
-    private JButton donTRunButton;
     private JCheckBox promptOnWarningCheckBox;
     private JProgressBar progressBar3;
     private JLabel pfd;
     private JLabel pcd;
+    private JProgressBar progressBar4;
     private ArrayList<String> questions = new ArrayList<String>();
     private ArrayList<String[]> answers = new ArrayList<String[]>();
     private int cindex = 0;
@@ -65,6 +63,12 @@ public class TestGUI {
     private File outCSVDir;
     private File pythonDir;
     private File pythonCSVDir;
+    private int strictness = 0;
+    private ArrayList<String> inputs;
+    private ArrayList<String> outputs;
+
+
+    private int pause = 0;
 
     public String join(String[] s, String delimiter) {
         String out = "";
@@ -72,6 +76,49 @@ public class TestGUI {
             out += i + delimiter;
         }
         return out.substring(0,out.length()-delimiter.length());
+    }
+
+    public void gradeSingleProgram(String filename) {
+        //ArrayList<String> inputs, ArrayList<String> outputs, int strictness
+        String warnings = "";
+        if (PythonRunnerFramework.checkForOpen(filename)) {
+            warnings += "WARNING: open() function detected! ";
+        }
+
+        if (PythonRunnerFramework.checkForImport(filename)) {
+            warnings += "WARNING: import detected! ";
+        }
+        if (warnings.length()>0) {
+            if (strictness == 1) {
+                // don't run, just give them a 0
+                PythonRunnerFramework.giveZero(filename,inputs,pythonCSVDir);
+                return;
+            }
+            else if (strictness == 2) {
+                // give a warning
+                ProcessBuilder pb = new ProcessBuilder("Notepad.exe", filename);
+                try {
+                    pb.start();
+                } catch (Exception e) {
+
+                }
+                int n = JOptionPane.showConfirmDialog(
+                        null,
+                        "Are you sure you want to run this program?",
+                        "Are you sure you want to run this program?",
+                        JOptionPane.YES_NO_OPTION);
+
+                if (n!=0) {
+                    PythonRunnerFramework.generateCSV(filename,inputs,outputs,pythonCSVDir);
+                } else {
+                    PythonRunnerFramework.giveZero(filename,inputs,pythonCSVDir);
+                }
+
+            }
+            else {
+                PythonRunnerFramework.generateCSV(filename,inputs,outputs,pythonCSVDir);
+            }
+        }
     }
 
     public TestGUI() {
@@ -432,6 +479,41 @@ public class TestGUI {
 
                 } else {
                     System.out.println("No Selection ");
+                }
+            }
+        });
+        runStudentProgramsButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                String inp, expout;
+                progressBar4.setMaximum(100);
+                if (pythonDir != null && pythonCSVDir != null && (inp = pinput.getText()) != null && (expout = poutput.getText()) != null) {
+                    // TODO
+                    // for file in directory:
+                    // gradesinglefile
+                    if (strictWarningsCheckBox.isSelected()) {
+                        strictness = 2;
+                    } else if (promptOnWarningCheckBox.isSelected()) {
+                        strictness = 1;
+                    } else {
+                        strictness = 0;
+                    }
+
+                    File[] directoryListing = pythonDir.listFiles();
+                    if (directoryListing != null) {
+                        for (File child : directoryListing) {
+                            // Do something with child
+                            gradeSingleProgram(child.getAbsolutePath());
+                        }
+                    } else {
+                        // Handle the case where dir is not really a directory.
+                        // Checking dir.isDirectory() above would not be sufficient
+                        // to avoid race conditions with another process that deletes
+                        // directories.
+                    }
+                } else {
+                    progressBar2.setString("Error: please fill all fields in");
                 }
             }
         });
